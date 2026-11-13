@@ -1,13 +1,13 @@
 // Projects as served on 2026-09-02, in the order shown on the page.
 
 export const projects = {
-  eyebrow: 'Rust Portfolio',
-  title: 'Rust Consultancy & Projects',
+  eyebrow: 'Portfolio',
+  title: 'AI Inference & Rust Projects',
   intro:
-    'Leading Rust consultancy specializing in enterprise codebase migrations and high-performance systems. Showcasing expertise in transforming legacy systems to modern, memory-safe Rust implementations with proven performance gains and reduced operational costs.',
+    'From an LLM inference engine that runs on the device in your hand to post-quantum networking, these systems are built in Rust for performance, memory safety and results that can be verified.',
   filters: [
-    { name: 'All Rust Projects', match: '' },
-    { name: 'Consultancy', match: 'Consultancy' },
+    { name: 'All Projects', match: '' },
+    { name: 'AI Inference', match: 'AI Inference' },
     { name: 'P2P & Networking', match: 'P2P' },
     { name: 'Enterprise Rust', match: 'Enterprise' },
     { name: 'Research & ML', match: 'Machine Learning' },
@@ -16,7 +16,7 @@ export const projects = {
   items: [
     {
       title: 'Atlas Inference Engine',
-      category: 'Rust & Machine Learning',
+      category: 'AI Inference · Rust & CUDA',
       description: 'Atlas is an open-source LLM inference engine written in pure Rust and CUDA, hand-tuned for NVIDIA DGX Spark. It ships as a single ~75 MB binary with no Python and no PyTorch, runs on edge-class accelerators, and scales across nodes with expert parallelism.',
       technologies: ['Rust', 'CUDA', 'LLM Inference', 'NVIDIA DGX Spark', 'Quantization', 'Expert Parallelism'],
       icon: 'cpu',
@@ -27,6 +27,8 @@ export const projects = {
         'Hand-tuned and verified on NVIDIA DGX Spark (GB10)',
         'Scales across nodes with expert parallelism',
         'Open source, with atlasctl as the fleet control plane',
+        'Faster than a matched vLLM + MTP configuration at all 8 concurrency levels measured (1 to 128) on DGX Spark',
+        'MLPerf Inference v6.1 submitted, closed edge division, on NVIDIA GB10 and AMD Strix Halo',
       ],
     },
     {
@@ -42,21 +44,6 @@ export const projects = {
         'Reads a Mac chat.db or finds sms.db inside an iPhone backup automatically',
         'SHA-256 certification page, scoped to FRE 902(14) rather than claiming admissibility',
         'Lighthouse 100 on every category, installable as a PWA, works offline',
-      ],
-    },
-    {
-      title: 'Oxidize.rs - Rust Migration Consultancy',
-      category: 'Rust Consultancy',
-      description: 'Premier Rust consultancy firm specializing in migrating legacy codebases to Rust. We help enterprises modernize their tech stack by converting C++, Java, Python, and other language codebases to performant, memory-safe Rust implementations. Expertise in large-scale migrations, performance optimization, and team training.',
-      technologies: ['Rust', 'Code Migration', 'Performance Optimization', 'Enterprise Solutions', 'Legacy Modernization', 'Consulting'],
-      icon: 'briefcase',
-      link: 'mailto:thomas@avarok.net',
-      highlights: [
-        'Specialized in enterprise codebase migrations to Rust',
-        'Full-service consulting from assessment to implementation',
-        'Performance gains of 2-10x for migrated systems',
-        'Expert team training and knowledge transfer',
-        'Proven track record with Fortune 500 companies',
       ],
     },
     {

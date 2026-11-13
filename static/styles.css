@@ -4,7 +4,7 @@
 @font-face { font-family: "Manrope Fallback"; src: local("Arial"); size-adjust: 104%; ascent-override: 102%; descent-override: 29%; line-gap-override: 0%; }
 :root {
   color-scheme: light;
-  --page: #f8fafc; --surface: rgba(255, 255, 255, .9); --surface-solid: #fff; --line: #e2e8f0;
+  --page: #f8fafc; --surface: rgba(255, 255, 255, .97); --surface-solid: #fff; --line: #e2e8f0;
   --ink: #0f172a; --body: #334155; --muted: #526077; --accent: #1d4ed8; --accent-strong: #1e40af;
   --accent-soft: rgba(37, 99, 235, .1); --on-accent: #fff; --shadow: 0 1px 2px rgba(15, 23, 42, .05), 0 12px 32px -16px rgba(15, 23, 42, .18);
   --bg-ink: #0f172a; --bg-primary: #2563eb; --bg-secondary: #0ea5e9; --bg-tertiary: #64748b;
@@ -14,7 +14,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     color-scheme: dark;
-    --page: #0b1120; --surface: rgba(17, 24, 39, .86); --surface-solid: #111827; --line: #1f2a3d;
+    --page: #0b1120; --surface: rgba(17, 24, 39, .95); --surface-solid: #111827; --line: #1f2a3d;
     --ink: #f1f5f9; --body: #cbd5e1; --muted: #94a3b8; --accent: #60a5fa; --accent-strong: #93c5fd;
     --accent-soft: rgba(96, 165, 250, .12); --on-accent: #0b1120; --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 16px 40px -20px rgba(0, 0, 0, .7);
     --bg-ink: #e2e8f0; --bg-primary: #3b82f6; --bg-secondary: #38bdf8; --bg-tertiary: #94a3b8;
@@ -74,6 +74,18 @@ h1 { font-size: clamp(2.3rem, 5vw, 3.6rem); letter-spacing: -.035em; }
 .social:hover { color: var(--accent); background: var(--accent-soft); }
 .social .icon { width: 24px; height: 24px; }
 .hero-signature { color: var(--ink); justify-self: end; width: 100%; max-width: 520px; }
+/* Legibility over the animated background: a feathered wash of the page colour sits behind text
+   blocks (z-index -1 in the body's stacking context: above the canvas, below the content). The
+   scene stays visible at the edges and fades out under the words. */
+main { overflow-x: clip; }
+.hero-copy, .hero-signature, .section-head { position: relative; }
+.hero-copy::before, .hero-signature::before, .section-head::before {
+  content: ""; position: absolute; z-index: -1; pointer-events: none;
+  background: radial-gradient(closest-side, var(--page) 0%, var(--page) 58%, color-mix(in srgb, var(--page) 72%, transparent) 78%, transparent 100%);
+}
+.hero-copy::before { inset: -18% -16% -18% -22%; }
+.hero-signature::before { inset: -30% -18%; opacity: .85; }
+.section-head::before { inset: -40% -18%; }
 .signature { width: 100%; height: auto; }
 .scroll-cue { position: absolute; left: 50%; bottom: 24px; translate: -50% 0; display: grid; place-items: center; width: 48px; height: 48px; color: var(--muted); animation: cue 2.4s ease-in-out infinite; }
 @keyframes cue { 50% { transform: translateY(8px); } }

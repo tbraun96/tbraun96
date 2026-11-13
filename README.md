@@ -8,11 +8,11 @@
   </picture>
 </a>
 
-### Software Engineer & Rust Expert
+### AI Inference Innovator & Rust Expert
 
-Expert Rust developer and software engineer specializing in P2P networking, distributed systems, and post-quantum cryptography.
+AI inference innovator and Rust expert. Founder of Atlas Cybernetics and creator of the Atlas Inference Engine, plus The Citadel Protocol and Avarok Cybersecurity.
 
-[**thomaspbraun.com**](https://thomaspbraun.com) · [GitHub](https://github.com/tbraun96) · [LinkedIn](https://linkedin.com/in/tpbraun) · [CertifiedCopy](https://certified.sh) · [Medium Blog](https://blog.thomaspbraun.com/) · [Email](mailto:thomas@avarok.net)
+[**thomaspbraun.com**](https://thomaspbraun.com) · [Atlas Inference Engine](https://atlasinference.io) · [GitHub](https://github.com/tbraun96) · [LinkedIn](https://linkedin.com/in/tpbraun) · [CertifiedCopy](https://certified.sh) · [Medium Blog](https://blog.thomaspbraun.com/) · [Email](mailto:thomas@avarok.net)
 
 </div>
 
@@ -22,11 +22,11 @@ Expert Rust developer and software engineer specializing in P2P networking, dist
 |---|---|---|
 | [**Atlas Inference Engine**](https://atlasinference.io) | Atlas is an open-source LLM inference engine written in pure Rust and CUDA, hand-tuned for NVIDIA DGX Spark. | Rust · CUDA · LLM Inference |
 | [**CertifiedCopy**](https://certified.sh) | CertifiedCopy exports iPhone and Mac text messages to PDF or CSV entirely inside the browser. | Rust · WebAssembly · Dioxus |
-| **Oxidize.rs - Rust Migration Consultancy** | Premier Rust consultancy firm specializing in migrating legacy codebases to Rust. | Rust · Code Migration · Performance Optimization |
 | [**The Citadel Protocol - Rust P2P Framework**](https://github.com/Avarok-Cybersecurity/Citadel-Protocol) | Revolutionary Rust-based peer-to-peer communication protocol implementing post-quantum cryptography. | Rust · P2P Networking · Post-Quantum Cryptography |
 
 ## Experience
 
+- **Founder**, Atlas Cybernetics Corp — current
 - **Founder & Rust Consultant**, Avarok Cybersecurity — current
 - **Software Engineer**, Kraken Digital Asset Exchange — previous
 - **R&D Engineer II**, Ansys — previous
@@ -35,7 +35,7 @@ Expert Rust developer and software engineer specializing in P2P networking, dist
 
 ## Focus
 
-Rust Consultancy · Post-Quantum Communication · Cryptographic Protocol Design · Computer & Network Security
+LLM Inference Engineering · GPU Kernel Optimization · Rust Consultancy · Post-Quantum Communication · Cryptographic Protocol Design · Computer & Network Security
 
 ---
 

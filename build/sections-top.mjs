@@ -15,8 +15,8 @@ export function hero(person, links, signatureSvg) {
       <h1 id="home-title">${esc(lead)}<br><span class="accent">${esc(accent)}</span></h1>
       <p class="hero-lede">${esc(person.lede)}</p>
       <div class="actions">
-        <a class="btn btn-primary" href="mailto:${esc(person.email)}">${icon('mail')}Hire Rust Expert</a>
-        <a class="btn btn-ghost" href="#projects">${icon('shield')}View Rust Projects</a>
+        <a class="btn btn-primary" href="mailto:${esc(person.email)}">${icon('mail')}Get in Touch</a>
+        <a class="btn btn-ghost" href="#projects">${icon('cpu')}View Projects</a>
       </div>
       <ul class="socials" aria-label="Profiles">${social}</ul>
     </div>
@@ -54,7 +54,7 @@ export function experience(x) {
   return `<section id="experience" class="section" aria-labelledby="experience-title">
   <div class="wrap">
     ${sectionHead(x, 'experience')}
-    <ul class="grid grid-3" role="list">${x.roles.map(role).join('')}</ul>
+    <ul class="grid grid-2" role="list">${x.roles.map(role).join('')}</ul>
     ${patent(x.patent)}
   </div>
 </section>`;

@@ -5,7 +5,7 @@ export const contact = {
   eyebrow: 'Get In Touch',
   title: 'Contact Me',
   intro:
-    "Interested in discussing cybersecurity, post-quantum communications, or potential collaborations? I'd love to hear from you.",
+    "Interested in discussing AI inference, cybersecurity, post-quantum communications, or potential collaborations? I'd love to hear from you.",
   channelsTitle: 'Connect With Me',
   channels: [
     { label: 'Email', value: 'thomas@avarok.net', href: 'mailto:thomas@avarok.net', icon: 'mail' },
@@ -14,6 +14,7 @@ export const contact = {
   ],
   inquiriesTitle: 'Inquiries Welcome For:',
   inquiries: [
+    'AI inference & LLM deployment',
     'Cybersecurity consultations',
     'Rust development & consulting',
     'Speaking engagements',

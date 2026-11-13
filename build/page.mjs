@@ -20,8 +20,8 @@ function structuredData(c) {
     name: c.person.fullName,
     url: c.site.url,
     email: `mailto:${c.person.email}`,
-    jobTitle: 'Founder & Rust Consultant',
-    worksFor: { '@type': 'Organization', name: 'Avarok Cybersecurity' },
+    jobTitle: 'Founder',
+    worksFor: [{ '@type': 'Organization', name: 'Atlas Cybernetics Corp', url: 'https://atlasinference.io' }, { '@type': 'Organization', name: 'Avarok Cybersecurity' }],
     sameAs: c.links.filter((l) => l.href.startsWith('https://')).map((l) => l.href),
   };
   return JSON.stringify(data).replace(/</g, '\\u003c');

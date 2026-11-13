@@ -6,22 +6,23 @@ export const site = {
   url: 'https://thomaspbraun.com',
   title: 'Portfolio of Thomas Braun',
   description:
-    'Expert Rust developer and software engineer specializing in P2P networking, distributed systems, and post-quantum cryptography.',
+    'AI inference innovator and Rust expert. Founder of Atlas Cybernetics and creator of the Atlas Inference Engine, plus The Citadel Protocol and Avarok Cybersecurity.',
   ogImage: '/img/og.jpg',
 };
 
 export const person = {
   name: 'Thomas Braun',
   fullName: 'Thomas Phillip Braun',
-  footerTagline: 'Founder, Rust Veteran & Cybersecurity Expert',
-  eyebrow: 'Thomas Braun • Rust Developer',
-  headline: ['Software Engineer &', 'Rust Expert'],
+  footerTagline: 'Founder · AI Inference Innovator · Rust Veteran',
+  eyebrow: 'Thomas Braun • Founder, Atlas Cybernetics',
+  headline: ['AI Inference Innovator', '& Rust Expert'],
   lede:
-    'Expert Rust developer and software engineer specializing in P2P networking, distributed systems, and post-quantum cryptography. Creator of The Citadel Protocol - a revolutionary peer-to-peer secure communication framework built in Rust. Founder of Avarok Cybersecurity, delivering cutting-edge networking and security solutions.',
+    'Founder of Atlas Cybernetics and creator of the Atlas Inference Engine: open-source LLM inference in pure Rust and CUDA, one ~75 MB binary from edge accelerators to expert-parallel clusters, submitted to MLPerf Inference on both NVIDIA and AMD. Also the creator of The Citadel Protocol, a post-quantum peer-to-peer framework, and founder of Avarok Cybersecurity.',
   email: 'thomas@avarok.net',
 };
 
 export const links = [
+  { label: 'Atlas Inference Engine', href: 'https://atlasinference.io', icon: 'cpu' },
   { label: 'GitHub', href: 'https://github.com/tbraun96', icon: 'github' },
   { label: 'LinkedIn', href: 'https://linkedin.com/in/tpbraun', icon: 'linkedin' },
   { label: 'CertifiedCopy', href: 'https://certified.sh', icon: 'filecheck' },
@@ -32,8 +33,15 @@ export const experience = {
   eyebrow: 'Career Journey',
   title: 'Professional Experience',
   intro:
-    'My professional path has been focused on Rust development, cybersecurity, cryptography, and secure systems development, with a consistent theme of innovation across different roles.',
+    'My professional path has moved from cryptography and secure systems to AI inference, with Rust and a consistent theme of innovation running through every role.',
   roles: [
+    {
+      title: 'Founder',
+      org: 'Atlas Cybernetics Corp',
+      when: 'Current',
+      logo: '/logos/atlas-cybernetics.svg',
+      text: 'Leading the Atlas Inference Engine: LLM inference in pure Rust and CUDA with hand-tuned kernels for NVIDIA DGX Spark, the same kernels compiled for AMD Strix Halo, MLPerf Inference v6.1 submissions in the closed edge division on both, and a release gate that ships an image only after every model passes the serve matrix.',
+    },
     {
       title: 'Founder & Rust Consultant',
       org: 'Avarok Cybersecurity',
@@ -104,7 +112,7 @@ export const education = {
 export const skills = {
   eyebrow: 'Expertise',
   title: 'Technical Skills',
-  intro: 'A diverse technical skillset rooted in Rust development, computer security, cryptography and specialized domains.',
+  intro: 'A technical skillset rooted in Rust, spanning AI inference, computer security, cryptography and specialized domains.',
   levels: [
     { name: 'Rust Programming', pct: 98, text: 'Expert-level proficiency in Rust for systems programming, with extensive experience in memory safety, performance optimization, and professional consulting.' },
     { name: 'Cryptography', pct: 90, text: 'Deep understanding of cryptographic algorithms, protocols, and their implementations.' },
@@ -115,6 +123,8 @@ export const skills = {
   ],
   areasTitle: 'Areas of Specialization',
   areas: [
+    { name: 'LLM Inference Engineering', text: 'Inference engines in pure Rust and CUDA: NVFP4 and FP8 quantization, MTP speculative decoding, and expert parallelism across nodes.' },
+    { name: 'GPU Kernel Optimization', text: 'Hand-tuned CUDA kernels for NVIDIA Grace Blackwell (GB10), compiled unchanged for AMD RDNA 3.5 with SCALE.' },
     { name: 'Rust Consultancy', text: 'Professional consulting services for Rust-based systems, focusing on performance, safety, and scalability.' },
     { name: 'Post-Quantum Communication', text: 'Development of communication protocols secure against quantum computing threats.' },
     { name: 'Cryptographic Protocol Design', text: 'Invention and implementation of novel cryptographic protocols for secure systems.' },
