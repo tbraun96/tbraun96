@@ -1,0 +1,17 @@
+{
+  "name": "thomaspbraun.com",
+  "private": true,
+  "type": "module",
+  "description": "GitHub profile README and source of thomaspbraun.com",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "build": "node build/build.mjs",
+    "check:readme": "node build/build.mjs --check",
+    "lighthouse": "lhci autorun",
+    "deploy": "wrangler pages deploy dist --project-name=thomaspbraun --branch=main"
+  },
+  "devDependencies": {
+    "@lhci/cli": "0.15.1",
+    "wrangler": "4.156.0"
+  }
+}
