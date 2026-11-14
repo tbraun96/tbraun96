@@ -22,6 +22,7 @@ AI inference innovator and Rust expert. Founder of Atlas Cybernetics and creator
 |---|---|---|
 | [**Atlas Inference Engine**](https://atlasinference.io) | Atlas is an open-source LLM inference engine written in pure Rust and CUDA, hand-tuned for NVIDIA DGX Spark. | Rust · CUDA · LLM Inference |
 | [**CertifiedCopy**](https://certified.sh) | CertifiedCopy exports iPhone and Mac text messages to PDF or CSV entirely inside the browser. | Rust · WebAssembly · Dioxus |
+| [**Citadel Workspaces**](https://work.avarok.net) | Citadel Workspaces is a post-quantum secure, peer-to-peer collaborative workspace built on The Citadel Protocol. | Rust · WebAssembly · Post-Quantum Cryptography |
 | [**The Citadel Protocol - Rust P2P Framework**](https://github.com/Avarok-Cybersecurity/Citadel-Protocol) | Revolutionary Rust-based peer-to-peer communication protocol implementing post-quantum cryptography. | Rust · P2P Networking · Post-Quantum Cryptography |
 
 ## Experience

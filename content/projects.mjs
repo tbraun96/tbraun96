@@ -1,4 +1,4 @@
-// Projects as served on 2026-09-02, in the order shown on the page.
+// Projects in the order shown on the page: the 2026-09-02 set plus Citadel Workspaces.
 
 export const projects = {
   eyebrow: 'Portfolio',
@@ -44,6 +44,22 @@ export const projects = {
         'Reads a Mac chat.db or finds sms.db inside an iPhone backup automatically',
         'SHA-256 certification page, scoped to FRE 902(14) rather than claiming admissibility',
         'Lighthouse 100 on every category, installable as a PWA, works offline',
+      ],
+    },
+    {
+      title: 'Citadel Workspaces',
+      category: 'Post-Quantum P2P Collaboration',
+      description: 'Citadel Workspaces is a post-quantum secure, peer-to-peer collaborative workspace built on The Citadel Protocol. Teams chat, call, share files and edit live documents together over end-to-end encrypted connections that rest on lattice-based cryptography, with each member running a local agent that keeps keys and plaintext on their own machine.',
+      technologies: ['Rust', 'WebAssembly', 'Post-Quantum Cryptography', 'P2P', 'CRDT', 'Cloudflare Workers', 'React'],
+      icon: 'briefcase',
+      link: 'https://work.avarok.net',
+      highlights: [
+        'End-to-end encrypted chat, voice and video calls, and file transfer between peers',
+        'Live collaborative documents, merged by a CRDT',
+        'Post-quantum only: lattice-based key exchange, with no classical-only fallback',
+        'A local agent holds the keys, so decrypted content never leaves the member’s machine',
+        'Workspaces organised into a tree of offices and rooms with custom roles and permissions',
+        'Installable as a PWA',
       ],
     },
     {
