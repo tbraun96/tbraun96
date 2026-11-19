@@ -43,6 +43,10 @@ allow = ["/"]
 
 [content]
 mainSelector = "main"
+# dist/ is gitignored, so a page's lastmod is the newest commit of what produces it: the content modules, the
+# build modules that render the page (build/readme.mjs writes only README.md), and the stylesheet and signature
+# the build inlines.
+sources = { "/" = ["content/*.mjs", "build/build.mjs", "build/page.mjs", "build/html.mjs", "build/icons.mjs", "build/sections-*.mjs", "static/styles.css", "static/img/signature.svg"] }
 
 # The site's own CSP already admits the Web Analytics beacon Cloudflare injects on this zone.
 [analytics]

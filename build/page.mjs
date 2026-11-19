@@ -32,7 +32,6 @@ function head(c, css) {
   return `<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="build" content="{{geo.build_id}}">
 <title>${esc(s.title)}</title>
 <meta name="description" content="${esc(s.description)}">
 <link rel="canonical" href="${esc(s.url)}/">
