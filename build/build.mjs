@@ -19,20 +19,13 @@ function inlineSignature(svg) {
   return inline;
 }
 
-function buildId() {
-  const arg = process.argv.find((a) => a.startsWith('--build-id='));
-  const id = arg ? arg.slice('--build-id='.length) : '';
-  if (!/^[A-Za-z0-9._-]{1,64}$/.test(id)) throw new Error('npm run build -- --build-id=<commit sha or "local"> is required');
-  return id;
-}
-
 async function main() {
   const check = process.argv.includes('--check');
   const expected = readme(content, { repo: REPO });
   if (check) {
     const actual = await readFile(at('README.md'), 'utf8');
     if (actual !== expected) {
-      console.error('README.md is out of date: run `npm run build -- --build-id=local` and commit the result.');
+      console.error('README.md is out of date: run `npm run build` and commit the result.');
       process.exit(1);
     }
     console.log('README.md matches content/.');
@@ -40,7 +33,7 @@ async function main() {
   }
   const css = (await readFile(at('static/styles.css'), 'utf8')).replace(/\s*\n\s*/g, '');
   const signatureSvg = inlineSignature(await readFile(at('static/img/signature.svg'), 'utf8'));
-  const html = page(content, { css, signatureSvg, year: new Date().getUTCFullYear(), build: buildId() });
+  const html = page(content, { css, signatureSvg, year: new Date().getUTCFullYear() });
 
   await rm(at('dist'), { recursive: true, force: true });
   await mkdir(at('dist'));

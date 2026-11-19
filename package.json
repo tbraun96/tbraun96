@@ -6,12 +6,6 @@
   "engines": { "node": ">=22" },
   "scripts": {
     "build": "node build/build.mjs",
-    "check:readme": "node build/build.mjs --check",
-    "lighthouse": "lhci autorun",
-    "deploy": "wrangler pages deploy dist --project-name=thomaspbraun --branch=main"
-  },
-  "devDependencies": {
-    "@lhci/cli": "0.15.1",
-    "wrangler": "4.156.0"
+    "check:readme": "node build/build.mjs --check"
   }
 }

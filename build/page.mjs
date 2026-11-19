@@ -27,14 +27,13 @@ function structuredData(c) {
   return JSON.stringify(data).replace(/</g, '\\u003c');
 }
 
-function head(c, css, build) {
+function head(c, css) {
   const s = c.site;
   return `<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(s.title)}</title>
 <meta name="description" content="${esc(s.description)}">
-<meta name="build" content="${esc(build)}">
 <link rel="canonical" href="${esc(s.url)}/">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f8fafc">
@@ -67,10 +66,10 @@ function nav(name) {
 </header>`;
 }
 
-export function page(c, { css, signatureSvg, year, build }) {
+export function page(c, { css, signatureSvg, year }) {
   return `<!doctype html>
 <html lang="en">
-${head(c, css, build)}
+${head(c, css)}
 <body>
 <a class="skip" href="#main">Skip to content</a>
 ${nav(c.person.name)}
