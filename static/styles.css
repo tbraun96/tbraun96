@@ -1,7 +1,7 @@
 /* Inlined into index.html by build/build.mjs. Tokens first; --bg-* are the animated background's
    palette (ink, primary, secondary, tertiary), read by app.js, so the scene follows the theme. */
 @font-face { font-family: "Manrope"; src: url("/fonts/manrope.woff2") format("woff2"); font-weight: 200 800; font-display: swap; }
-@font-face { font-family: "Manrope Fallback"; src: local("Arial"); size-adjust: 104%; ascent-override: 102%; descent-override: 29%; line-gap-override: 0%; }
+@font-face { font-family: "Manrope Fallback"; src: local("Arial"), local("Liberation Sans"), local("Arimo"); size-adjust: 104%; ascent-override: 102%; descent-override: 29%; line-gap-override: 0%; }
 :root {
   color-scheme: light;
   --page: #f8fafc; --surface: rgba(255, 255, 255, .97); --surface-solid: #fff; --line: #e2e8f0;
