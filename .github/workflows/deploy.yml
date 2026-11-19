@@ -40,7 +40,7 @@ jobs:
         run: npm run check:readme
       - name: GeoHarness (deploy)
         id: geoharness
-        uses: Avarok-Cybersecurity/geoharness@43b129f0a5599e616a3213882eda3d01f6614fb9 # main
+        uses: Avarok-Cybersecurity/geoharness@d731c52513049f1042758af963dd1d16a9eea0b3 # main
         with:
           cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -84,7 +84,7 @@ jobs:
         run: npm run check:readme
       - name: GeoHarness (dry run, deploy false)
         id: geoharness
-        uses: Avarok-Cybersecurity/geoharness@43b129f0a5599e616a3213882eda3d01f6614fb9 # main
+        uses: Avarok-Cybersecurity/geoharness@d731c52513049f1042758af963dd1d16a9eea0b3 # main
         with:
           site-path: .
           adapter: npm
