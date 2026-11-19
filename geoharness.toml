@@ -1,0 +1,56 @@
+# GeoHarness builds, audits, gates and deploys thomaspbraun.com with this file
+# (see .github/workflows/deploy.yml and https://github.com/Avarok-Cybersecurity/geoharness/blob/main/docs/config.md).
+
+[site]
+origin = "https://thomaspbraun.com"
+name = "Thomas Braun"
+language = "en"
+
+[identity]
+kind = "person"
+name = "Thomas Braun"
+url = "https://thomaspbraun.com"
+# The profiles the site links to as its owner's (content/profile.mjs `links`); the product links there
+# (Atlas Inference Engine, CertifiedCopy) are projects, not identities.
+sameAs = ["https://github.com/tbraun96", "https://linkedin.com/in/tpbraun", "https://blog.thomaspbraun.com/"]
+
+# The site never published a Content-Signal. Search and answers that cite it are wanted; training is not
+# opted into until the owner says so. robots.txt still admits every crawler, as it always has.
+[contentSignal]
+search = true
+aiInput = true
+aiTrain = false
+
+[[bots]]
+group = "search"
+tokens = ["Googlebot", "Bingbot", "OAI-SearchBot", "Claude-SearchBot", "PerplexityBot"]
+allow = ["/"]
+
+[[bots]]
+group = "user"
+tokens = ["ChatGPT-User", "Claude-User", "Perplexity-User"]
+allow = ["/"]
+
+[[bots]]
+group = "training"
+tokens = ["GPTBot", "ClaudeBot", "Google-Extended", "Applebot-Extended", "CCBot"]
+allow = ["/"]
+
+[[bots]]
+group = "other"
+tokens = ["*"]
+allow = ["/"]
+
+[content]
+mainSelector = "main"
+
+# The site's own CSP already admits the Web Analytics beacon Cloudflare injects on this zone.
+[analytics]
+cloudflareWebAnalytics = true
+
+[llms]
+summary = "Thomas Braun: AI inference innovator and Rust expert, founder of Atlas Cybernetics and creator of the Atlas Inference Engine, The Citadel Protocol and Avarok Cybersecurity."
+
+[[llms.sections]]
+title = "Profile"
+routes = ["/"]
