@@ -14,6 +14,7 @@ const NAV = [
 ];
 
 function structuredData(c) {
+  const current = c.experience.roles.filter((r) => r.end === 'present' && r.orgUrl);
   const data = {
     '@context': 'https://schema.org',
     '@type': 'Person',
@@ -21,8 +22,8 @@ function structuredData(c) {
     url: c.site.url,
     email: `mailto:${c.person.email}`,
     jobTitle: 'Founder',
-    worksFor: [{ '@type': 'Organization', name: 'Atlas Cybernetics Corp', url: 'https://atlasinference.io' }, { '@type': 'Organization', name: 'Avarok Cybersecurity' }],
-    sameAs: c.links.filter((l) => l.href.startsWith('https://')).map((l) => l.href),
+    worksFor: current.map((r) => ({ '@type': 'Organization', name: r.org, url: r.orgUrl })),
+    sameAs: c.identityLinks,
   };
   return JSON.stringify(data).replace(/</g, '\\u003c');
 }

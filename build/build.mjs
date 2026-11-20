@@ -3,7 +3,9 @@
 
 import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
-import * as content from '../content/profile.mjs';
+import * as copy from '../content/profile.mjs';
+import { loadCareer } from './career.mjs';
+import { compose } from './compose.mjs';
 import { page } from './page.mjs';
 import { readme } from './readme.mjs';
 
@@ -21,6 +23,7 @@ function inlineSignature(svg) {
 
 async function main() {
   const check = process.argv.includes('--check');
+  const content = compose(copy, await loadCareer());
   const expected = readme(content, { repo: REPO });
   if (check) {
     const actual = await readFile(at('README.md'), 'utf8');

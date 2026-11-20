@@ -4,12 +4,11 @@ import { esc, link, sectionHead, slug } from './html.mjs';
 import { icon } from './icons.mjs';
 
 export function skills(x) {
-  const bars = x.levels
+  const groups = x.groups
     .map(
-      (s) => `<li class="skill">
-  <div class="skill-head"><h3>${esc(s.name)}</h3><span class="skill-pct">${s.pct}%</span></div>
-  <div class="bar" aria-hidden="true"><span style="--pct:${s.pct}%"></span></div>
-  <p>${esc(s.text)}</p>
+      (g) => `<li class="skill-group">
+  <h3>${esc(g.name)}</h3>
+  <ul class="tags" aria-label="${esc(g.name)}">${g.items.map((s) => `<li>${esc(s)}</li>`).join('')}</ul>
 </li>`,
     )
     .join('');
@@ -20,7 +19,7 @@ export function skills(x) {
   <div class="wrap">
     ${sectionHead(x, 'skills')}
     <div class="skills-grid">
-      <ul class="card skill-list" role="list">${bars}</ul>
+      <ul class="card skill-list" role="list">${groups}</ul>
       <div><h3 class="sub">${esc(x.areasTitle)}</h3><ul class="grid grid-2" role="list">${areas}</ul></div>
     </div>
   </div>
@@ -29,20 +28,29 @@ export function skills(x) {
 
 function projectLinks(p) {
   const out = [];
-  if (p.link) {
-    const label = p.link.startsWith('mailto:') ? 'Enquire' : 'Visit site';
-    out.push(link(p.link, `${label}${icon('external', 'icon icon-inline')}`, { cls: 'btn btn-small', label: `${label}: ${p.title}` }));
-  }
-  if (p.github) out.push(link(p.github, `${icon('github', 'icon icon-inline')}Source`, { cls: 'btn btn-small btn-ghost', label: `Source code: ${p.title}` }));
+  if (p.url) out.push(link(p.url, `Visit site${icon('external', 'icon icon-inline')}`, { cls: 'btn btn-small', label: `Visit site: ${p.name}` }));
+  if (p.repo) out.push(link(p.repo, `${icon('github', 'icon icon-inline')}Source`, { cls: 'btn btn-small btn-ghost', label: `Source code: ${p.name}` }));
   return out.length ? `<div class="project-links">${out.join('')}</div>` : '';
+}
+
+/** Verified figures, each with its source in the title attribute so a reader can check it. */
+function projectStats(p) {
+  if (p.stats.length === 0) return '';
+  const items = p.stats
+    .map((s) => `<li title="${esc(`${s.source} (${s.retrieved})`)}"><strong>${esc(s.value)}</strong> ${esc(s.label)}</li>`)
+    .join('');
+  return `<ul class="stats" aria-label="Figures">${items}</ul>`;
 }
 
 function project(p) {
   const tags = p.technologies.map((t) => `<li>${esc(t)}</li>`).join('');
   const highlights = p.highlights.map((h) => `<li>${icon('check', 'icon icon-inline')}${esc(h)}</li>`).join('');
+  const role = p.role ? `<p class="meta">${esc(p.role)}</p>` : '';
   return `<li class="card project" data-category="${esc(p.category)}">
-  <div class="project-head">${icon(p.icon, 'icon icon-badge')}<div><h3 id="p-${slug(p.title)}">${esc(p.title)}</h3><p class="meta">${esc(p.category)}</p></div></div>
+  <div class="project-head">${icon(p.icon, 'icon icon-badge')}<div><h3 id="p-${slug(p.name)}">${esc(p.name)}</h3><p class="meta">${esc(p.category)}</p></div></div>
+  ${role}
   <p>${esc(p.description)}</p>
+  ${projectStats(p)}
   <ul class="tags" aria-label="Technologies">${tags}</ul>
   <details><summary>Highlights</summary><ul class="highlights">${highlights}</ul></details>
   ${projectLinks(p)}
