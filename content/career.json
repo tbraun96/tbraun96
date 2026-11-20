@@ -7,7 +7,8 @@
     "titleVariants": {
       "rust-systems": "Senior Rust Systems Engineer | LLM Inference, GPU Kernels, Post-Quantum Peer-to-Peer",
       "founding-rust": "Founding Rust Engineer | Shipped LLM Inference, Post-Quantum Networking and Local-First Products",
-      "inference": "Inference Engineer | Rust and CUDA LLM Serving, Hand-Tuned GPU Kernels"
+      "inference": "Inference Engineer | Rust and CUDA LLM Serving, Hand-Tuned GPU Kernels",
+      "rust-networking": "Senior Rust Systems Engineer | Async Networking, Distributed Systems, Applied Cryptography"
     },
     "email": "thomas@avarok.net",
     "website": "https://thomaspbraun.com",
