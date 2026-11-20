@@ -32,6 +32,11 @@ function logo(r) {
   return `<span class="logo logo-mono" aria-hidden="true">${esc(r.org.replace(/[^A-Za-z]/g, '').slice(0, 1))}</span>`;
 }
 
+function highlights(bullets) {
+  if (bullets.length === 0) return '';
+  return `<details><summary>Highlights</summary><ul class="highlights">${bullets.map((b) => `<li>${icon('check', 'icon icon-inline')}${esc(b)}</li>`).join('')}</ul></details>`;
+}
+
 function role(r) {
   const range = dateRange(r);
   const dates = range ? `<span>${esc(range)}</span>` : '';
@@ -43,7 +48,7 @@ function role(r) {
     <p class="meta"><span>${esc(r.org)}</span>${dates}<span class="pill">${esc(whenLabel(r))}</span></p>
     ${where ? `<p class="meta">${where}</p>` : ''}
     <p>${esc(r.summary)}</p>
-    <details><summary>Highlights</summary><ul class="highlights">${r.bullets.map((b) => `<li>${icon('check', 'icon icon-inline')}${esc(b)}</li>`).join('')}</ul></details>
+    ${highlights(r.bullets)}
   </div>
 </li>`;
 }
@@ -53,7 +58,7 @@ function patent(p, label) {
   <div class="patent-copy">
     <p class="eyebrow">${icon('award', 'icon icon-inline')}${esc(label)}</p>
     <h3 id="patent-title">${esc(p.title)}</h3>
-    <p class="meta">${link(p.url, esc(p.number))} · granted ${esc(p.granted)} · ${esc(p.recognition.title)}, ${esc(p.recognition.by)}</p>
+    <p class="meta">${link(p.url, esc(p.number))}<span>Granted ${esc(p.granted)}</span><span>${esc(p.recognition.title)}, ${esc(p.recognition.by)}</span></p>
     <p>${esc(p.text)}</p>
   </div>
   <img class="patent-figure" src="/img/patent-800.webp" srcset="/img/patent-800.webp 800w, /img/patent-1346.webp 1346w"
