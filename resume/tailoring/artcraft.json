@@ -7,7 +7,7 @@
     "retrieved": "2026-11-20",
     "applyTo": "hn@storyteller.ai"
   },
-  "title": "Senior Rust Systems Engineer | LLM Inference, GPU Kernels, Post-Quantum Peer-to-Peer",
+  "titleVariant": "rust-systems",
   "summary": "Senior Rust systems engineer and founder who ships a family of inter-related open source products and owns each end to end: the Atlas Inference Engine (pure Rust and CUDA LLM inference in one ~75 MB native binary with hand-tuned GPU kernels, out-serving vLLM on NVIDIA DGX Spark and submitted to MLPerf Inference v6.1 on NVIDIA and AMD), the patented post-quantum Citadel Protocol, the peer-to-peer Citadel Workspace built on it, LatticeDB (a graph and vector database compiled to WebAssembly that runs in the browser with no backend) and local-first tools that keep every file on the user's own machine. Eight years of Rust across distributed systems, async networking on Tokio, cryptography, agent-ready CLI tools and MCP servers, testing, CI and release gates, and backends on PostgreSQL, MySQL, Redis and Kubernetes. Self-directed and independent.",
   "keywords": [
     "Rust",

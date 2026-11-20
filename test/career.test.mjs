@@ -76,3 +76,12 @@ test('reverse chronological order: current by start, then ended by end, undated 
   const ids = reverseChronological(career.experience).map((r) => r.id);
   assert.deepEqual(ids, ['atlas', 'nomyx', 'avarok', 'synopsys', 'commonwealth-labs', 'kraken', 'webb', 'bitgem', 'ansys']);
 });
+
+test('title variants must exist and be non-empty', () => {
+  const none = copy();
+  none.person.titleVariants = {};
+  assert.match(problemsOf(none).join('\n'), /titleVariants must NOT have fewer than 1 properties/);
+  const blank = copy();
+  blank.person.titleVariants['rust-systems'] = '';
+  assert.match(problemsOf(blank).join('\n'), /titleVariants\/rust-systems must NOT have fewer than 1 characters/);
+});

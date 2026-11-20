@@ -7,7 +7,7 @@ import { dateRange, isDated, reverseChronological } from '../build/dates.mjs';
 /** The ATS-standard headings, in the order every renderer and the parse check expect them. */
 export const SECTION_ORDER = ['Summary', 'Experience', 'Projects', 'Skills', 'Education'];
 
-const TAILORING_FIELDS = ['target', 'title', 'summary', 'keywords', 'experienceBullets', 'projects', 'projectHighlights', 'projectStats', 'includePatent', 'patentBullets', 'skillGroups'];
+const TAILORING_FIELDS = ['target', 'titleVariant', 'summary', 'keywords', 'experienceBullets', 'projects', 'projectHighlights', 'projectStats', 'includePatent', 'patentBullets', 'skillGroups'];
 const CONTACT_FIELDS = ['phone'];
 
 function requireFields(obj, fields, what) {
@@ -106,10 +106,12 @@ export function resumeModel(career, tailoring, contact) {
   requireFields(tailoring, TAILORING_FIELDS, 'tailoring');
   requireFields(contact, CONTACT_FIELDS, 'contact');
   if (tailoring.summary !== null && typeof tailoring.summary !== 'string') throw new Error('tailoring.summary must be a string, or null to use career.json summary');
+  if (!Object.hasOwn(career.person.titleVariants, tailoring.titleVariant)) throw new Error(`unknown title variant: ${tailoring.titleVariant}`);
+  const title = career.person.titleVariants[tailoring.titleVariant];
   const experience = experienceEntries(career, tailoring);
   const doc = {
-    name: career.person.shortName,
-    title: tailoring.title,
+    name: career.person.name,
+    title,
     contact: contactLine(career.person, contact),
     sections: [
       { heading: 'Summary', blocks: [{ type: 'p', text: tailoring.summary ?? career.summary }] },

@@ -104,7 +104,7 @@
       "required": [
         "name",
         "fullName",
-        "shortName",
+        "titleVariants",
         "headline",
         "email",
         "website",
@@ -116,9 +116,6 @@
           "$ref": "#/$defs/text"
         },
         "fullName": {
-          "$ref": "#/$defs/text"
-        },
-        "shortName": {
           "$ref": "#/$defs/text"
         },
         "headline": {
@@ -167,6 +164,18 @@
         },
         "location": {
           "$ref": "#/$defs/text"
+        },
+        "titleVariants": {
+          "type": "object",
+          "description": "Headline titles a tailoring file selects by id; tailoring never writes its own.",
+          "minProperties": 1,
+          "propertyNames": {
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          }
         }
       }
     },

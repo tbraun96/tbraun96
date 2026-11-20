@@ -6,7 +6,7 @@
     "postingTitle": "Public resume (no phone number)",
     "retrieved": "2026-11-20"
   },
-  "title": "Senior Rust Systems Engineer | LLM Inference, GPU Kernels, Post-Quantum Peer-to-Peer",
+  "titleVariant": "rust-systems",
   "summary": null,
   "keywords": [
     "Rust",

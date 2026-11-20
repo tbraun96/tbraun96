@@ -19,7 +19,8 @@ const { doc, warnings } = resumeModel(career, tailoring, contact);
 test('sections come in the ATS order and the contact line is in the body', () => {
   assert.deepEqual(doc.sections.map((s) => s.heading), SECTION_ORDER);
   assert.deepEqual(doc.contact.slice(0, 3), [career.person.location, contact.phone, career.person.email]);
-  assert.equal(doc.name, 'Thomas P. Braun');
+  assert.equal(doc.name, 'Thomas Braun');
+  assert.equal(doc.title, career.person.titleVariants[tailoring.titleVariant]);
 });
 
 test('experience is reverse chronological and dated; undated roles are reported, not guessed', () => {
@@ -45,6 +46,7 @@ test('the tailoring must name every knob and only known ids', () => {
   assert.throws(() => resumeModel(career, tailoring, {}), /contact is missing: phone/);
   assert.throws(() => resumeModel(career, tailoring, { phone: '' }), /contact.phone must be/);
   assert.throws(() => resumeModel(career, { ...tailoring, summary: 5 }, contact), /tailoring.summary must be/);
+  assert.throws(() => resumeModel(career, { ...tailoring, titleVariant: 'nope' }, contact), /unknown title variant: nope/);
 });
 
 test('the plain text of the model passes its own parse check, and a dropped heading fails it', () => {

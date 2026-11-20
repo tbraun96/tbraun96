@@ -3,8 +3,12 @@
   "person": {
     "name": "Thomas Braun",
     "fullName": "Thomas Phillip Braun",
-    "shortName": "Thomas P. Braun",
     "headline": "AI Inference Innovator & Rust Expert",
+    "titleVariants": {
+      "rust-systems": "Senior Rust Systems Engineer | LLM Inference, GPU Kernels, Post-Quantum Peer-to-Peer",
+      "founding-rust": "Founding Rust Engineer | Shipped LLM Inference, Post-Quantum Networking and Local-First Products",
+      "inference": "Inference Engineer | Rust and CUDA LLM Serving, Hand-Tuned GPU Kernels"
+    },
     "email": "thomas@avarok.net",
     "website": "https://thomaspbraun.com",
     "location": "Charlotte, North Carolina, United States",
