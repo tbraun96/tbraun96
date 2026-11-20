@@ -14,12 +14,12 @@ url = "https://thomaspbraun.com"
 # (Atlas Inference Engine, CertifiedCopy) are projects, not identities.
 sameAs = ["https://github.com/tbraun96", "https://linkedin.com/in/tpbraun", "https://blog.thomaspbraun.com/"]
 
-# The site never published a Content-Signal. Search and answers that cite it are wanted; training is not
-# opted into until the owner says so. robots.txt still admits every crawler, as it always has.
+# Search, answers that cite the site, and training are all allowed (owner decision 2026-11-19), matching
+# robots.txt, which admits every crawler.
 [contentSignal]
 search = true
 aiInput = true
-aiTrain = false
+aiTrain = true
 
 [[bots]]
 group = "search"
