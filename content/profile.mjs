@@ -6,16 +6,16 @@ export const site = {
   url: 'https://thomaspbraun.com',
   title: 'Portfolio of Thomas Braun',
   description:
-    'AI inference innovator and Rust expert. Founder of Atlas Cybernetics and creator of the Atlas Inference Engine, plus The Citadel Protocol and Avarok Cybersecurity.',
+    'AI inference innovator and Rust expert. Co-Founder of Atlas Cybernetics and creator of the Atlas Inference Engine, plus The Citadel Protocol and Avarok Cybersecurity.',
   ogImage: '/img/og.jpg',
 };
 
 export const hero = {
   footerTagline: 'Founder · AI Inference Innovator · Rust Veteran',
-  eyebrow: 'Thomas Braun • Founder, Atlas Cybernetics',
+  eyebrow: 'Thomas Braun • Co-Founder, Atlas Cybernetics',
   headline: ['AI Inference Innovator', '& Rust Expert'],
   lede:
-    'Founder of Atlas Cybernetics and creator of the Atlas Inference Engine: open-source LLM inference in pure Rust and CUDA, one ~75 MB binary from edge accelerators to expert-parallel clusters, submitted to MLPerf Inference on both NVIDIA and AMD. Also the creator of The Citadel Protocol, a post-quantum peer-to-peer framework, and founder of Avarok Cybersecurity.',
+    'Co-Founder of Atlas Cybernetics and creator of the Atlas Inference Engine: open-source LLM inference in pure Rust and CUDA, one ~75 MB binary from edge accelerators to expert-parallel clusters, submitted to MLPerf Inference on both NVIDIA and AMD. Also the creator of The Citadel Protocol, a post-quantum peer-to-peer framework, and founder of Avarok Cybersecurity.',
 };
 
 export const sections = {

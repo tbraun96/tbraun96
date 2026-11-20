@@ -8,7 +8,7 @@ import { dateRange, isDated, reverseChronological } from '../build/dates.mjs';
 export const SECTION_ORDER = ['Summary', 'Experience', 'Projects', 'Skills', 'Education'];
 
 const TAILORING_FIELDS = ['target', 'title', 'summary', 'keywords', 'experienceBullets', 'projects', 'projectHighlights', 'projectStats', 'includePatent', 'patentBullets', 'skillGroups'];
-const CONTACT_FIELDS = ['location', 'phone'];
+const CONTACT_FIELDS = ['phone'];
 
 function requireFields(obj, fields, what) {
   const missing = fields.filter((f) => obj[f] === undefined);
@@ -17,9 +17,12 @@ function requireFields(obj, fields, what) {
 
 const host = (url) => url.replace(/^https?:\/\//, '').replace(/\/$/, '');
 
+/** City/state, email and links are public (career.json); the phone comes from the private contact file and is
+ * explicitly null for the published copy. */
 function contactLine(person, contact) {
+  if (contact.phone !== null && (typeof contact.phone !== 'string' || contact.phone === '')) throw new Error('contact.phone must be a non-empty string, or null for a resume without a phone number');
   const handles = person.profiles.filter((p) => p.handle).map((p) => p.handle);
-  return [contact.location, contact.phone, person.email, ...handles, host(person.website)];
+  return [person.location, contact.phone, person.email, ...handles, host(person.website)].filter((x) => x !== null);
 }
 
 function byId(list, what) {
@@ -102,13 +105,14 @@ export function educationEntries(career) {
 export function resumeModel(career, tailoring, contact) {
   requireFields(tailoring, TAILORING_FIELDS, 'tailoring');
   requireFields(contact, CONTACT_FIELDS, 'contact');
+  if (tailoring.summary !== null && typeof tailoring.summary !== 'string') throw new Error('tailoring.summary must be a string, or null to use career.json summary');
   const experience = experienceEntries(career, tailoring);
   const doc = {
     name: career.person.shortName,
     title: tailoring.title,
     contact: contactLine(career.person, contact),
     sections: [
-      { heading: 'Summary', blocks: [{ type: 'p', text: tailoring.summary }] },
+      { heading: 'Summary', blocks: [{ type: 'p', text: tailoring.summary ?? career.summary }] },
       { heading: 'Experience', blocks: experience.entries },
       { heading: 'Projects', blocks: projectEntries(career, tailoring) },
       { heading: 'Skills', blocks: skillEntries(career, tailoring) },

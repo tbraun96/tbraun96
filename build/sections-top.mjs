@@ -18,6 +18,7 @@ export function hero(person, links, signatureSvg) {
       <div class="actions">
         <a class="btn btn-primary" href="mailto:${esc(person.email)}">${icon('mail')}Get in Touch</a>
         <a class="btn btn-ghost" href="#projects">${icon('cpu')}View Projects</a>
+        <a class="btn btn-ghost" href="/resume.pdf">${icon('filecheck')}Resume (PDF)</a>
       </div>
       <ul class="socials" aria-label="Profiles">${social}</ul>
     </div>

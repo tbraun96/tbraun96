@@ -61,6 +61,7 @@ test('every role from both sources is present', () => {
     assert.ok(orgs.includes(org), `missing role at ${org}`);
   }
   assert.ok(career.projects.some((p) => p.name === 'LatticeDB'));
+  assert.ok(career.projects.every((p) => p.url || p.repo), 'every project points at a page or a repository');
 });
 
 test('date helpers', () => {

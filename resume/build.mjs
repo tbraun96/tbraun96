@@ -1,33 +1,21 @@
 // `node resume/build.mjs --tailoring resume/tailoring/artcraft.json --contact resume/contact.private.json`
 // writes out/resume-<target>.pdf and .docx from content/career.json, then reads both back and fails if an
 // ATS could not recover every section, entry, date and keyword in order, or if the PDF runs past two pages.
-// The only module in resume/ that touches the filesystem or a browser.
+// Filesystem I/O lives here; the browser lives in pdf.mjs.
 
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { parseArgs } from 'node:util';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { Packer } from 'docx';
-import { chromium } from 'playwright-core';
 import { loadCareer } from '../build/career.mjs';
 import { checkParse } from './check.mjs';
-import { docxText, pdfText } from './extract.mjs';
+import { docxText } from './extract.mjs';
 import { plainText, resumeModel } from './model.mjs';
+import { checkPdf, printPdf } from './pdf.mjs';
 import { resumeDocx } from './render-docx.mjs';
 import { resumeHtml } from './render-html.mjs';
 
-const MAX_PAGES = 2;
 const root = fileURLToPath(new URL('..', import.meta.url));
-
-async function printPdf(html) {
-  const browser = await chromium.launch();
-  try {
-    const page = await browser.newPage();
-    await page.setContent(html, { waitUntil: 'load' });
-    return await page.pdf({ format: 'Letter', preferCSSPageSize: true, printBackground: false });
-  } finally {
-    await browser.close();
-  }
-}
 
 function report(label, problems) {
   if (problems.length === 0) return console.log(`${label}: parse check passed`);
@@ -53,10 +41,8 @@ async function main() {
   const docxBuffer = await Packer.toBuffer(resumeDocx(doc));
   await Promise.all([writeFile(`${base}.pdf`, pdf), writeFile(`${base}.docx`, docxBuffer), writeFile(`${base}.html`, html), writeFile(`${base}.txt`, plainText(doc))]);
 
-  const fromPdf = await pdfText(pdf);
-  const pdfProblems = checkParse(fromPdf.text, doc).problems;
-  if (fromPdf.pages > MAX_PAGES) pdfProblems.push(`PDF is ${fromPdf.pages} pages; at most ${MAX_PAGES} allowed`);
-  report(`${base}.pdf (${fromPdf.pages} page${fromPdf.pages === 1 ? '' : 's'})`, pdfProblems);
+  const fromPdf = await checkPdf(pdf, doc);
+  report(`${base}.pdf (${fromPdf.pages} page${fromPdf.pages === 1 ? '' : 's'})`, fromPdf.problems);
   report(`${base}.docx`, checkParse(await docxText(docxBuffer), doc).problems);
   console.log(`keywords checked: ${doc.keywords.length}; target: ${doc.target.postingTitle} (${doc.target.posting})`);
 }

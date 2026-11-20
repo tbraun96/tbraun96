@@ -10,9 +10,9 @@
 
 ### AI Inference Innovator & Rust Expert
 
-AI inference innovator and Rust expert. Founder of Atlas Cybernetics and creator of the Atlas Inference Engine, plus The Citadel Protocol and Avarok Cybersecurity.
+AI inference innovator and Rust expert. Co-Founder of Atlas Cybernetics and creator of the Atlas Inference Engine, plus The Citadel Protocol and Avarok Cybersecurity.
 
-[**thomaspbraun.com**](https://thomaspbraun.com) · [Atlas Inference Engine](https://atlasinference.io) · [GitHub](https://github.com/tbraun96) · [LinkedIn](https://linkedin.com/in/tpbraun) · [CertifiedCopy](https://certified.sh) · [Medium Blog](https://blog.thomaspbraun.com/) · [Email](mailto:thomas@avarok.net)
+[**thomaspbraun.com**](https://thomaspbraun.com) · [Resume (PDF)](https://thomaspbraun.com/resume.pdf) · [Atlas Inference Engine](https://atlasinference.io) · [GitHub](https://github.com/tbraun96) · [LinkedIn](https://linkedin.com/in/tpbraun) · [CertifiedCopy](https://certified.sh) · [Medium Blog](https://blog.thomaspbraun.com/) · [Email](mailto:thomas@avarok.net)
 
 </div>
 
@@ -33,7 +33,7 @@ AI inference innovator and Rust expert. Founder of Atlas Cybernetics and creator
 
 ## Experience
 
-- **Founder**, Atlas Cybernetics Corp — Mar 2026 - Present
+- **Co-Founder**, Atlas Cybernetics Corp — Mar 2026 - Present
 - **Principal Rust Software Engineer**, Nomyx — Feb 2025 - Present
 - **Founder & Rust Consultant**, Avarok Cybersecurity — Jan 2018 - Present
 - **Senior Software Engineer**, Synopsys — Feb 2023 - Mar 2026

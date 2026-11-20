@@ -31,7 +31,7 @@ export function readme(c, { repo }) {
 
 ${md(c.site.description)}
 
-[**thomaspbraun.com**](${c.site.url}) · ${profiles} · [Email](mailto:${c.person.email})
+[**thomaspbraun.com**](${c.site.url}) · [Resume (PDF)](${c.site.url}/resume.pdf) · ${profiles} · [Email](mailto:${c.person.email})
 
 </div>
 

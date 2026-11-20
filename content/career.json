@@ -7,6 +7,7 @@
     "headline": "AI Inference Innovator & Rust Expert",
     "email": "thomas@avarok.net",
     "website": "https://thomaspbraun.com",
+    "location": "Charlotte, North Carolina, United States",
     "profiles": [
       {
         "label": "Atlas Inference Engine",
@@ -42,11 +43,11 @@
       }
     ]
   },
-  "summary": "Rust systems engineer and founder with eight years building a family of inter-related products: the Atlas Inference Engine (pure Rust and CUDA LLM inference, submitted to MLPerf Inference v6.1 on NVIDIA and AMD), the patented post-quantum Citadel Protocol, the Citadel Workspace built on it, and the browser-side tools around them. Expertise in GPU kernel optimization, quantization, applied post-quantum and threshold cryptography, asynchronous networking and peer-to-peer systems.",
+  "summary": "Rust systems engineer and founder with eight years building a family of inter-related open source products: the Atlas Inference Engine (pure Rust and CUDA LLM inference, submitted to MLPerf Inference v6.1 on NVIDIA and AMD), the patented post-quantum Citadel Protocol, the Citadel Workspace built on it, and the browser-side tools around them. Expertise in GPU kernel optimization, quantization, applied post-quantum and threshold cryptography, asynchronous networking and peer-to-peer systems.",
   "experience": [
     {
       "id": "atlas",
-      "title": "Founder",
+      "title": "Co-Founder",
       "org": "Atlas Cybernetics Corp",
       "orgUrl": "https://atlasinference.io",
       "unit": "Atlas Inference Engine",
@@ -69,8 +70,7 @@
         "site-2026-11",
         "atlas-readme",
         "atlascybernetics-site"
-      ],
-      "note": "The June 2026 resume lists this role as Co-Founder of Atlas Inference Engine; the site (newer) says Founder of Atlas Cybernetics Corp. Owner to confirm the title."
+      ]
     },
     {
       "id": "nomyx",
@@ -788,90 +788,6 @@
         "crates-io"
       ],
       "note": "Not on the site or the June resume; added because it is a verified, published crate of the owner's. Owner may drop it."
-    },
-    {
-      "id": "avarok-cybersecurity-platform",
-      "name": "Avarok Cybersecurity Platform",
-      "category": "Enterprise Rust Solutions",
-      "kind": "legacy",
-      "description": "Enterprise-grade cybersecurity platform built with Rust for core performance-critical components. Integrates The Citadel Protocol for secure P2P communications. Features Rust-based threat detection engines, network analysis tools, and distributed security monitoring across peer-to-peer networks.",
-      "technologies": [
-        "Rust",
-        "Java",
-        "P2P Architecture",
-        "Network Security",
-        "Distributed Computing",
-        "Cloud Native"
-      ],
-      "icon": "server",
-      "highlights": [
-        "Rust-powered security engine for real-time threat analysis",
-        "P2P network monitoring and intrusion detection",
-        "Distributed consensus mechanisms in Rust",
-        "High-performance packet processing",
-        "Integration with enterprise cloud infrastructure"
-      ],
-      "stats": [],
-      "sources": [
-        "site-2026-11"
-      ],
-      "note": "Carried over from the site unchanged. No repository or page backs these claims; owner to confirm or delete."
-    },
-    {
-      "id": "rust-neural-network-engine",
-      "name": "Rust Neural Network Engine",
-      "category": "Rust & Machine Learning",
-      "kind": "legacy",
-      "description": "High-performance neural network implementation in pure Rust, demonstrating the language's capabilities beyond traditional systems programming. Explores Rust's potential in AI/ML domains with focus on performance optimization, SIMD operations, and parallel computing for distributed training across P2P networks.",
-      "technologies": [
-        "Rust",
-        "Machine Learning",
-        "SIMD",
-        "Parallel Computing",
-        "ndarray",
-        "rayon"
-      ],
-      "icon": "code",
-      "highlights": [
-        "Pure Rust ML implementation without Python dependencies",
-        "SIMD optimizations for matrix operations",
-        "Parallel training using Rayon",
-        "P2P distributed training architecture",
-        "Memory-safe deep learning operations"
-      ],
-      "stats": [],
-      "sources": [
-        "site-2026-11"
-      ],
-      "note": "Carried over from the site unchanged. No repository or page backs these claims; owner to confirm or delete."
-    },
-    {
-      "id": "decentralized-p2p-storage",
-      "name": "Decentralized P2P Storage System",
-      "category": "Rust & P2P Networking",
-      "kind": "legacy",
-      "description": "Distributed storage solution built entirely in Rust, leveraging peer-to-peer networking for decentralized data persistence. Implements content-addressable storage, distributed hash tables (DHT), and Byzantine fault tolerance. Showcases Rust's strengths in building reliable distributed systems.",
-      "technologies": [
-        "Rust",
-        "P2P",
-        "DHT",
-        "Distributed Systems",
-        "libp2p",
-        "Content Addressing"
-      ],
-      "icon": "network",
-      "highlights": [
-        "libp2p integration for P2P networking",
-        "Distributed hash table implementation in Rust",
-        "Content-addressable storage with IPLD",
-        "Byzantine fault tolerant consensus",
-        "Zero-knowledge proof integration"
-      ],
-      "stats": [],
-      "sources": [
-        "site-2026-11"
-      ],
-      "note": "Carried over from the site unchanged. No repository or page backs these claims; owner to confirm or delete."
     }
   ],
   "skills": {

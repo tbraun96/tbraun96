@@ -40,6 +40,8 @@ jobs:
           node-version: 22
       - name: Install (career.json validation needs ajv)
         run: npm ci --no-audit --no-fund
+      - name: Chromium for /resume.pdf (printed during npm run build)
+        run: npx playwright-core install chromium-headless-shell
       - name: README.md is generated from content/
         run: npm run check:readme
       - name: GeoHarness (deploy)
@@ -88,6 +90,8 @@ jobs:
           node-version: 22
       - name: Install (career.json validation needs ajv)
         run: npm ci --no-audit --no-fund
+      - name: Chromium for /resume.pdf (printed during npm run build)
+        run: npx playwright-core install chromium-headless-shell
       - name: README.md is generated from content/
         run: npm run check:readme
       - name: GeoHarness (dry run, deploy false)

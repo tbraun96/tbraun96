@@ -11,19 +11,20 @@ import { resumeHtml } from '../resume/render-html.mjs';
 
 const career = await loadCareer();
 const tailoring = JSON.parse(await readFile(new URL('../resume/tailoring/artcraft.json', import.meta.url), 'utf8'));
+const general = JSON.parse(await readFile(new URL('../resume/tailoring/general.json', import.meta.url), 'utf8'));
 // Test-only contact details: the real ones live in the gitignored resume/contact.private.json.
-const contact = { location: 'Testville, Oregon, United States', phone: '555-010-0199' };
+const contact = { phone: '555-010-0199' };
 const { doc, warnings } = resumeModel(career, tailoring, contact);
 
 test('sections come in the ATS order and the contact line is in the body', () => {
   assert.deepEqual(doc.sections.map((s) => s.heading), SECTION_ORDER);
-  assert.deepEqual(doc.contact.slice(0, 3), [contact.location, contact.phone, career.person.email]);
+  assert.deepEqual(doc.contact.slice(0, 3), [career.person.location, contact.phone, career.person.email]);
   assert.equal(doc.name, 'Thomas P. Braun');
 });
 
 test('experience is reverse chronological and dated; undated roles are reported, not guessed', () => {
   const titles = doc.sections[1].blocks.map((b) => `${b.title} @ ${b.org}`);
-  assert.equal(titles[0], 'Founder @ Atlas Cybernetics Corp, Atlas Inference Engine');
+  assert.equal(titles[0], 'Co-Founder @ Atlas Cybernetics Corp, Atlas Inference Engine');
   assert.equal(titles.at(-1), 'Solidity Developer @ Bitgem NFT');
   assert.ok(titles.every((t) => !t.includes('Ansys')));
   assert.deepEqual(warnings, ['omitted from the resume (no dates in career.json): R&D Engineer II, Ansys']);
@@ -41,7 +42,9 @@ test('projects follow the tailoring order, end with the patent, and carry source
 test('the tailoring must name every knob and only known ids', () => {
   assert.throws(() => resumeModel(career, { ...tailoring, keywords: undefined }, contact), /tailoring is missing: keywords/);
   assert.throws(() => resumeModel(career, { ...tailoring, projects: ['nope'] }, contact), /unknown project: nope/);
-  assert.throws(() => resumeModel(career, tailoring, { location: 'x' }), /contact is missing: phone/);
+  assert.throws(() => resumeModel(career, tailoring, {}), /contact is missing: phone/);
+  assert.throws(() => resumeModel(career, tailoring, { phone: '' }), /contact.phone must be/);
+  assert.throws(() => resumeModel(career, { ...tailoring, summary: 5 }, contact), /tailoring.summary must be/);
 });
 
 test('the plain text of the model passes its own parse check, and a dropped heading fails it', () => {
@@ -57,6 +60,14 @@ test('keywords are matched as whole words', () => {
   assert.deepEqual(missingKeywords('specific things', ['CI']), ['keyword absent: CI']);
   assert.deepEqual(missingKeywords('testing, CI and release gates', ['CI']), []);
   assert.deepEqual(missingKeywords('agent-ready CLIs', ['CLI']), ['keyword absent: CLI']);
+});
+
+test('the public resume (general tailoring, phone null) carries city, email and links but no phone', () => {
+  const pub = resumeModel(career, general, { phone: null }).doc;
+  assert.deepEqual(pub.contact, [career.person.location, career.person.email, 'github.com/tbraun96', 'linkedin.com/in/tpbraun', 'thomaspbraun.com']);
+  assert.equal(pub.sections[0].blocks[0].text, career.summary);
+  assert.doesNotMatch(resumeHtml(pub).replace(/[\s().+-]/g, ''), /\d{10,}/);
+  assert.deepEqual(checkParse(plainText(pub), pub).problems, []);
 });
 
 test('the HTML is single-column, table-free, image-free and selectable', () => {

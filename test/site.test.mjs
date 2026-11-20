@@ -22,6 +22,10 @@ test('the page shows every role, every project and every skill group from career
   assert.ok(text.includes('Mar 2026 - Present'));
 });
 
+test('the page links the public resume', () => {
+  assert.match(html, /<a class="btn btn-ghost" href="\/resume.pdf">[\s\S]*?Resume \(PDF\)<\/a>/);
+});
+
 test('self-rated skill percentages are gone', () => {
   assert.doesNotMatch(html, /skill-pct|class="bar"|--pct:/);
   const skillsSection = /<section id="skills"[\s\S]*?<\/section>/.exec(html)[0];
@@ -55,7 +59,8 @@ test('the public page carries no phone number, street address or tel: link', () 
 
 test('the README lists the roles with their dates and the linked projects', () => {
   const md = readme(content, { repo: 'tbraun96/tbraun96' });
-  assert.match(md, /- \*\*Founder\*\*, Atlas Cybernetics Corp — Mar 2026 - Present/);
+  assert.match(md, /- \*\*Co-Founder\*\*, Atlas Cybernetics Corp — Mar 2026 - Present/);
+  assert.match(md, /\[Resume \(PDF\)\]\(https:\/\/thomaspbraun.com\/resume.pdf\)/);
   assert.match(md, /- \*\*R&D Engineer II\*\*, Ansys — previous/);
   assert.match(md, /\[\*\*LatticeDB\*\*\]\(https:\/\/avarok-cybersecurity.github.io\/lattice-db\/\)/);
   assert.doesNotMatch(md, /Rust Neural Network Engine/);
