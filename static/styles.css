@@ -115,6 +115,10 @@ h2::after { content: ""; display: block; width: 56px; height: 4px; border-radius
 .center { text-align: center; margin-top: 40px; }
 .logo { width: auto; height: 48px; margin-bottom: 20px; }
 .logo-round { height: 64px; }
+.logo-mono { display: grid; place-items: center; width: 48px; border-radius: 10px; background: var(--accent-soft); color: var(--accent); font-weight: 800; font-size: 1.3rem; }
+.role details { margin-top: 14px; }
+.stats { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: .92rem; color: var(--muted); }
+.stats strong { color: var(--ink); font-weight: 800; }
 @media (prefers-color-scheme: dark) { .logo { background: #f8fafc; border-radius: 10px; padding: 6px; } }
 
 /* experience + education */
@@ -128,13 +132,8 @@ h2::after { content: ""; display: block; width: 56px; height: 4px; border-radius
 /* skills */
 .skills-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 32px; align-items: start; }
 @media (max-width: 960px) { .skills-grid { grid-template-columns: 1fr; } }
-.skill-list { display: grid; gap: 24px; }
-.skill-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
-.skill-head h3 { font-size: 1.02rem; }
-.skill-pct { font-weight: 800; color: var(--accent); }
-.bar { height: 8px; border-radius: 8px; background: var(--accent-soft); margin: 10px 0; overflow: hidden; }
-.bar span { display: block; height: 100%; width: var(--pct); border-radius: inherit; background: linear-gradient(90deg, var(--bg-primary), var(--bg-secondary)); }
-.skill p { font-size: .93rem; color: var(--muted); }
+.skill-list { display: grid; gap: 22px; }
+.skill-group h3 { font-size: 1.02rem; margin-bottom: 10px; }
 .area h4 { font-size: 1.02rem; margin-bottom: 8px; }
 .area p { font-size: .93rem; color: var(--muted); }
 

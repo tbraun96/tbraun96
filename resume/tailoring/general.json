@@ -1,0 +1,66 @@
+{
+  "target": {
+    "company": "Public",
+    "role": "General resume published at thomaspbraun.com/resume.pdf",
+    "posting": "https://thomaspbraun.com/resume.pdf",
+    "postingTitle": "Public resume (no phone number)",
+    "retrieved": "2026-11-20"
+  },
+  "titleVariant": "rust-systems",
+  "summary": null,
+  "keywords": [
+    "Rust",
+    "CUDA",
+    "LLM inference",
+    "GPU",
+    "quantization",
+    "MLPerf",
+    "post-quantum",
+    "cryptography",
+    "peer-to-peer",
+    "WebAssembly",
+    "Tokio",
+    "distributed systems",
+    "open source",
+    "patent"
+  ],
+  "experienceBullets": {
+    "atlas": 3,
+    "nomyx": 2,
+    "avarok": 2,
+    "synopsys": 1,
+    "commonwealth-labs": 1,
+    "kraken": 1,
+    "webb": 1,
+    "bitgem": 1,
+    "ansys": 0
+  },
+  "projects": [
+    "atlas-inference-engine",
+    "citadel-protocol",
+    "citadel-workspace",
+    "latticedb",
+    "certifiedcopy",
+    "synchronized-work",
+    "geoharness"
+  ],
+  "projectHighlights": {
+    "atlas-inference-engine": 2,
+    "citadel-protocol": 1,
+    "citadel-workspace": 1,
+    "latticedb": 1,
+    "certifiedcopy": 1,
+    "synchronized-work": 1,
+    "geoharness": 1
+  },
+  "projectStats": 2,
+  "includePatent": true,
+  "patentBullets": 0,
+  "skillGroups": [
+    "Languages",
+    "AI Inference & GPU",
+    "Cryptography & Security",
+    "Networking & Distributed Systems",
+    "Web, WebAssembly & Cloud"
+  ]
+}

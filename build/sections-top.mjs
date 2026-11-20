@@ -2,6 +2,7 @@
 
 import { esc, link, sectionHead } from './html.mjs';
 import { icon } from './icons.mjs';
+import { dateRange, whenLabel } from './dates.mjs';
 
 export function hero(person, links, signatureSvg) {
   const [lead, accent] = person.headline;
@@ -17,6 +18,7 @@ export function hero(person, links, signatureSvg) {
       <div class="actions">
         <a class="btn btn-primary" href="mailto:${esc(person.email)}">${icon('mail')}Get in Touch</a>
         <a class="btn btn-ghost" href="#projects">${icon('cpu')}View Projects</a>
+        <a class="btn btn-ghost" href="/resume.pdf">${icon('filecheck')}Resume (PDF)</a>
       </div>
       <ul class="socials" aria-label="Profiles">${social}</ul>
     </div>
@@ -26,23 +28,38 @@ export function hero(person, links, signatureSvg) {
 </section>`;
 }
 
+function logo(r) {
+  if (r.logo) return `<img class="logo" src="${esc(r.logo)}" alt="${esc(r.org)}" width="120" height="48" loading="lazy" decoding="async">`;
+  return `<span class="logo logo-mono" aria-hidden="true">${esc(r.org.replace(/[^A-Za-z]/g, '').slice(0, 1))}</span>`;
+}
+
+function highlights(bullets) {
+  if (bullets.length === 0) return '';
+  return `<details><summary>Highlights</summary><ul class="highlights">${bullets.map((b) => `<li>${icon('check', 'icon icon-inline')}${esc(b)}</li>`).join('')}</ul></details>`;
+}
+
 function role(r) {
+  const range = dateRange(r);
+  const dates = range ? `<span>${esc(range)}</span>` : '';
+  const where = [r.unit, r.location].filter(Boolean).map(esc).join(' · ');
   return `<li class="card role">
-  <img class="logo" src="${esc(r.logo)}" alt="${esc(r.org)}" width="120" height="48" loading="lazy" decoding="async">
+  ${logo(r)}
   <div>
     <h3>${esc(r.title)}</h3>
-    <p class="meta"><span>${esc(r.org)}</span><span class="pill">${esc(r.when)}</span></p>
-    <p>${esc(r.text)}</p>
+    <p class="meta"><span>${esc(r.org)}</span>${dates}<span class="pill">${esc(whenLabel(r))}</span></p>
+    ${where ? `<p class="meta">${where}</p>` : ''}
+    <p>${esc(r.summary)}</p>
+    ${highlights(r.bullets)}
   </div>
 </li>`;
 }
 
-function patent(p) {
+function patent(p, label) {
   return `<article class="card patent" aria-labelledby="patent-title">
   <div class="patent-copy">
-    <p class="eyebrow">${icon('award', 'icon icon-inline')}${esc(p.label)}</p>
+    <p class="eyebrow">${icon('award', 'icon icon-inline')}${esc(label)}</p>
     <h3 id="patent-title">${esc(p.title)}</h3>
-    <p class="meta">${esc(p.number)}</p>
+    <p class="meta">${link(p.url, esc(p.number))}<span>Granted ${esc(p.granted)}</span><span>${esc(p.recognition.title)}, ${esc(p.recognition.by)}</span></p>
     <p>${esc(p.text)}</p>
   </div>
   <img class="patent-figure" src="/img/patent-800.webp" srcset="/img/patent-800.webp 800w, /img/patent-1346.webp 1346w"
@@ -55,13 +72,14 @@ export function experience(x) {
   <div class="wrap">
     ${sectionHead(x, 'experience')}
     <ul class="grid grid-2" role="list">${x.roles.map(role).join('')}</ul>
-    ${patent(x.patent)}
+    ${patent(x.patent, x.patentLabel)}
   </div>
 </section>`;
 }
 
 function school(e) {
-  const place = e.place ? `<p class="meta">${icon('mappin', 'icon icon-inline')}${esc(e.place)}</p>` : '';
+  const where = [e.place, e.year].filter(Boolean).map(esc).join(' · ');
+  const place = where ? `<p class="meta">${icon('mappin', 'icon icon-inline')}${where}</p>` : '';
   return `<li class="card school">
   <img class="logo logo-round" src="${esc(e.logo)}" alt="${esc(e.school)}" width="64" height="64" loading="lazy" decoding="async">
   <p class="eyebrow">${esc(e.degree)}</p>

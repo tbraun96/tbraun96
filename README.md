@@ -10,9 +10,9 @@
 
 ### AI Inference Innovator & Rust Expert
 
-AI inference innovator and Rust expert. Founder of Atlas Cybernetics and creator of the Atlas Inference Engine, plus The Citadel Protocol and Avarok Cybersecurity.
+AI inference innovator and Rust expert. Co-Founder of Atlas Cybernetics and creator of the Atlas Inference Engine, plus The Citadel Protocol and Avarok Cybersecurity.
 
-[**thomaspbraun.com**](https://thomaspbraun.com) · [Atlas Inference Engine](https://atlasinference.io) · [GitHub](https://github.com/tbraun96) · [LinkedIn](https://linkedin.com/in/tpbraun) · [CertifiedCopy](https://certified.sh) · [Medium Blog](https://blog.thomaspbraun.com/) · [Email](mailto:thomas@avarok.net)
+[**thomaspbraun.com**](https://thomaspbraun.com) · [Resume (PDF)](https://thomaspbraun.com/resume.pdf) · [Atlas Inference Engine](https://atlasinference.io) · [GitHub](https://github.com/tbraun96) · [LinkedIn](https://linkedin.com/in/tpbraun) · [CertifiedCopy](https://certified.sh) · [Medium Blog](https://blog.thomaspbraun.com/) · [Email](mailto:thomas@avarok.net)
 
 </div>
 
@@ -21,18 +21,29 @@ AI inference innovator and Rust expert. Founder of Atlas Cybernetics and creator
 | Project | | Stack |
 |---|---|---|
 | [**Atlas Inference Engine**](https://atlasinference.io) | Atlas is an open-source LLM inference engine written in pure Rust and CUDA, hand-tuned for NVIDIA DGX Spark. | Rust · CUDA · LLM Inference |
-| [**CertifiedCopy**](https://certified.sh) | CertifiedCopy exports iPhone and Mac text messages to PDF or CSV entirely inside the browser. | Rust · WebAssembly · Dioxus |
-| [**Citadel Workspaces**](https://work.avarok.net) | Citadel Workspaces is a post-quantum secure, peer-to-peer collaborative workspace built on The Citadel Protocol. | Rust · WebAssembly · Post-Quantum Cryptography |
-| [**The Citadel Protocol - Rust P2P Framework**](https://github.com/Avarok-Cybersecurity/Citadel-Protocol) | Revolutionary Rust-based peer-to-peer communication protocol implementing post-quantum cryptography. | Rust · P2P Networking · Post-Quantum Cryptography |
+| [**The Citadel Protocol**](https://avarok.net) | A post-quantum secure networking protocol and SDK that makes building hyper-secure client-server and peer-to-peer applications easy. | Rust · Tokio · Post-Quantum Cryptography |
+| [**Citadel Workspace**](https://work.avarok.net) | A collaborative workspace where every message, file and call is encrypted end to end with post-quantum cryptography, and traffic travels directly between people rather than through a server that could read it. | Rust · WebAssembly · TypeScript |
+| [**CertifiedCopy**](https://certified.sh) | CertifiedCopy exports iPhone and Mac text messages to PDF, CSV, JSON or RSMF entirely inside the browser. | Rust · WebAssembly · Dioxus |
+| [**LatticeDB**](https://avarok-cybersecurity.github.io/lattice-db/) | A hybrid graph and vector database built in pure Rust that runs in the browser with zero backend: production-grade HNSW vector search and Cypher graph queries from a ~500 KB WebAssembly module, with a Qdrant-compatible REST API and Neo4j-compatible Cypher when served natively. | Rust · WebAssembly · HNSW |
+| [**GeoHarness**](https://geo.avarok.net) | A GitHub Action that makes any website agent-ready on Cloudflare's free plan: it builds the site, gives every page a markdown twin served to AI agents on Accept: text/markdown, writes llms.txt, a sitemap and robots.txt Content Signals, gates the build on an evidence-graded GEO score and Lighthouse 100 in all four categories, deploys to Cloudflare Workers or Pages, and verifies the live site with real AI user agents. | Rust · WebAssembly · TypeScript |
+| [**AutoRepoRAG**](https://github.com/Avarok-Cybersecurity/AutoRepoRAG) | A GitHub Action that turns a repository into a ready-to-query vector corpus straight from CI: it chunks the source, embeds it against any OpenAI-compatible embeddings endpoint (or deterministic mock vectors that need no secrets), loads and verifies every vector against a checksum-pinned LatticeDB server, and exports a byte-deterministic corpus that a browser, a bot or another pipeline can load directly. | JavaScript · GitHub Actions · RAG |
+| [**synchronized.work**](https://synchronized.work) | Cross-person coordination for coding agents: one live tree of projects, tasks, people, agents and progress, with post-quantum signed prompts and Sign in with Citadel. | Rust · WebAssembly · Cloudflare Workers |
+| [**Applied Machine Learning on DGX Spark**](https://huggingface.co/Avarok) | Quantizing, serving and optimizing open LLMs on 2x NVIDIA DGX Spark: published quantized models on Hugging Face and an optimized vLLM image for DGX Spark that ran novel NVFP4 quants with a single command, the work that led to the Atlas Inference Engine. | vLLM · NVFP4 · GGUF |
+| [**heic-rs**](https://github.com/tbraun96/heic-rs) | A pure-Rust HEIC/HEIF image decoder with no libheif, no C toolchain and no unsafe code, published on crates.io. | Rust · Image Codecs · no\_std |
 
 ## Experience
 
-- **Founder**, Atlas Cybernetics Corp — current
-- **Founder & Rust Consultant**, Avarok Cybersecurity — current
-- **Software Engineer**, Kraken Digital Asset Exchange — previous
+- **Co-Founder**, Atlas Cybernetics Corp — Mar 2026 - Present
+- **Principal Rust Software Engineer**, Nomyx — Feb 2025 - Present
+- **Founder & Rust Consultant**, Avarok Cybersecurity — Jan 2018 - Present
+- **Senior Software Engineer**, Synopsys — Feb 2023 - Mar 2026
+- **Rust Software Engineer**, Commonwealth Labs — Dec 2022 - Feb 2025
+- **Software Engineer I**, Kraken Digital Asset Exchange — Oct 2022 - Dec 2022
+- **Rust Software Engineer**, Webb.tools — Nov 2021 - Oct 2022
+- **Solidity Developer**, Bitgem NFT — Dec 2020 - Feb 2021
 - **R&D Engineer II**, Ansys — previous
 
-**Patent** — *Recursive Cryptography Protocol*, USPTO #12224993. Recognized as patent of the month by the largest R&D advisory firm in the US. The patent discloses a post-quantum session-layer protocol that has highly configurable security settings like matrix-based ratcheting, enforced per-packet perfect forward secrecy, multi-layered encryption, and more depending on application needs.
+**Patent** — *Recursive Cryptography Protocol*, [US Patent 12,224,993 B2](https://patents.google.com/patent/US12224993B2/en). A post-quantum session-layer protocol with highly configurable security: per-message re-keying, multi-layered encryption, 3D-matrix ratcheting and post-quantum key exchange inside a networking protocol for peer-to-peer messaging and network applications.
 
 ## Focus
 
@@ -40,5 +51,5 @@ LLM Inference Engineering · GPU Kernel Optimization · Rust Consultancy · Post
 
 ---
 
-<sub>This repository is also the source of [thomaspbraun.com](https://thomaspbraun.com): every push to `main` must score 100 in all four Lighthouse categories before [GeoHarness](https://github.com/Avarok-Cybersecurity/geoharness) deploys it to Cloudflare Workers.
+<sub>Roles, projects, education and skills come from one file, `content/career.json`, which also generates the resume (`npm run resume`). This repository is also the source of [thomaspbraun.com](https://thomaspbraun.com): every push to `main` must score 100 in all four Lighthouse categories before [GeoHarness](https://github.com/Avarok-Cybersecurity/geoharness) deploys it to Cloudflare Workers.
 [![Deploy](https://github.com/tbraun96/tbraun96/actions/workflows/deploy.yml/badge.svg)](https://github.com/tbraun96/tbraun96/actions/workflows/deploy.yml)</sub>

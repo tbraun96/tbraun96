@@ -1,17 +1,19 @@
 // The GitHub profile README (github.com/tbraun96), generated from the same content as the site.
 
+import { dateRange } from './dates.mjs';
+
 const md = (text) => String(text).replace(/([\\`*_[\]|<>])/g, '\\$1');
 
 function projectRow(p) {
-  const href = p.link && !p.link.startsWith('mailto:') ? p.link : p.github;
-  const name = href ? `[**${md(p.title)}**](${href})` : `**${md(p.title)}**`;
+  const href = p.url ?? p.repo;
+  const name = `[**${md(p.name)}**](${href})`;
   const firstSentence = p.description.split(/(?<=\.)\s/)[0];
   return `| ${name} | ${md(firstSentence)} | ${p.technologies.slice(0, 3).map(md).join(' · ')} |`;
 }
 
 export function readme(c, { repo }) {
-  const linked = c.projects.items.filter((p) => p.link || p.github);
-  const roles = c.experience.roles.map((r) => `- **${md(r.title)}**, ${md(r.org)} — ${md(r.when.toLowerCase())}`).join('\n');
+  const linked = c.projects.items.filter((p) => p.url || p.repo);
+  const roles = c.experience.roles.map((r) => `- **${md(r.title)}**, ${md(r.org)} — ${md(dateRange(r) || 'previous')}`).join('\n');
   const areas = c.skills.areas.map((a) => md(a.name)).join(' · ');
   const profiles = c.links.map((l) => `[${md(l.label)}](${l.href})`).join(' · ');
   const p = c.experience.patent;
@@ -29,7 +31,7 @@ export function readme(c, { repo }) {
 
 ${md(c.site.description)}
 
-[**thomaspbraun.com**](${c.site.url}) · ${profiles} · [Email](mailto:${c.person.email})
+[**thomaspbraun.com**](${c.site.url}) · [Resume (PDF)](${c.site.url}/resume.pdf) · ${profiles} · [Email](mailto:${c.person.email})
 
 </div>
 
@@ -43,7 +45,7 @@ ${linked.map(projectRow).join('\n')}
 
 ${roles}
 
-**Patent** — *${md(p.title)}*, ${md(p.number)}. ${md(p.text)}.
+**Patent** — *${md(p.title)}*, [${md(p.number)}](${p.url}). ${md(p.text)}
 
 ## Focus
 
@@ -51,7 +53,7 @@ ${areas}
 
 ---
 
-<sub>This repository is also the source of [thomaspbraun.com](${c.site.url}): every push to \`main\` must score 100 in all four Lighthouse categories before [GeoHarness](https://github.com/Avarok-Cybersecurity/geoharness) deploys it to Cloudflare Workers.
+<sub>Roles, projects, education and skills come from one file, \`content/career.json\`, which also generates the resume (\`npm run resume\`). This repository is also the source of [thomaspbraun.com](${c.site.url}): every push to \`main\` must score 100 in all four Lighthouse categories before [GeoHarness](https://github.com/Avarok-Cybersecurity/geoharness) deploys it to Cloudflare Workers.
 [![Deploy](https://github.com/${repo}/actions/workflows/deploy.yml/badge.svg)](https://github.com/${repo}/actions/workflows/deploy.yml)</sub>
 `;
 }

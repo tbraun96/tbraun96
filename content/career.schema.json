@@ -1,0 +1,553 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thomaspbraun.com/career.schema.json",
+  "title": "Career data: the single source of the site's Experience/Projects sections and of the resume",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "person",
+    "summary",
+    "experience",
+    "patent",
+    "education",
+    "projects",
+    "skills",
+    "sources"
+  ],
+  "$defs": {
+    "month": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])$"
+    },
+    "start": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/month"
+        },
+        {
+          "const": "unknown"
+        }
+      ]
+    },
+    "end": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/month"
+        },
+        {
+          "const": "present"
+        },
+        {
+          "const": "unknown"
+        }
+      ]
+    },
+    "url": {
+      "type": "string",
+      "pattern": "^https://"
+    },
+    "sourceKeys": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "text": {
+      "type": "string",
+      "minLength": 1
+    },
+    "textList": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/text"
+      }
+    },
+    "stat": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "label",
+        "value",
+        "source",
+        "retrieved"
+      ],
+      "properties": {
+        "label": {
+          "$ref": "#/$defs/text"
+        },
+        "value": {
+          "$ref": "#/$defs/text"
+        },
+        "source": {
+          "$ref": "#/$defs/text"
+        },
+        "retrieved": {
+          "type": "string",
+          "format": "date"
+        },
+        "note": {
+          "$ref": "#/$defs/text"
+        }
+      }
+    }
+  },
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "person": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "fullName",
+        "titleVariants",
+        "headline",
+        "email",
+        "website",
+        "profiles",
+        "location"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/text"
+        },
+        "fullName": {
+          "$ref": "#/$defs/text"
+        },
+        "headline": {
+          "$ref": "#/$defs/text"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "website": {
+          "$ref": "#/$defs/url"
+        },
+        "profiles": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "label",
+              "url",
+              "icon",
+              "kind"
+            ],
+            "properties": {
+              "label": {
+                "$ref": "#/$defs/text"
+              },
+              "url": {
+                "$ref": "#/$defs/url"
+              },
+              "icon": {
+                "$ref": "#/$defs/text"
+              },
+              "kind": {
+                "enum": [
+                  "identity",
+                  "product"
+                ]
+              },
+              "handle": {
+                "$ref": "#/$defs/text"
+              }
+            }
+          }
+        },
+        "location": {
+          "$ref": "#/$defs/text"
+        },
+        "titleVariants": {
+          "type": "object",
+          "description": "Headline titles a tailoring file selects by id; tailoring never writes its own.",
+          "minProperties": 1,
+          "propertyNames": {
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "summary": {
+      "$ref": "#/$defs/text"
+    },
+    "experience": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "title",
+          "org",
+          "start",
+          "end",
+          "summary",
+          "bullets",
+          "sources"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "title": {
+            "$ref": "#/$defs/text"
+          },
+          "org": {
+            "$ref": "#/$defs/text"
+          },
+          "orgUrl": {
+            "$ref": "#/$defs/url"
+          },
+          "unit": {
+            "$ref": "#/$defs/text"
+          },
+          "location": {
+            "$ref": "#/$defs/text"
+          },
+          "engagement": {
+            "enum": [
+              "employee",
+              "contract",
+              "founder"
+            ]
+          },
+          "start": {
+            "$ref": "#/$defs/start"
+          },
+          "end": {
+            "$ref": "#/$defs/end"
+          },
+          "summary": {
+            "$ref": "#/$defs/text"
+          },
+          "bullets": {
+            "$ref": "#/$defs/textList"
+          },
+          "logo": {
+            "type": "string",
+            "pattern": "^/logos/.+\\.svg$"
+          },
+          "sources": {
+            "$ref": "#/$defs/sourceKeys"
+          },
+          "note": {
+            "$ref": "#/$defs/text"
+          }
+        }
+      }
+    },
+    "patent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "number",
+        "url",
+        "assignee",
+        "granted",
+        "text",
+        "bullets",
+        "recognition",
+        "image",
+        "sources"
+      ],
+      "properties": {
+        "title": {
+          "$ref": "#/$defs/text"
+        },
+        "number": {
+          "$ref": "#/$defs/text"
+        },
+        "url": {
+          "$ref": "#/$defs/url"
+        },
+        "assignee": {
+          "$ref": "#/$defs/text"
+        },
+        "granted": {
+          "type": "string",
+          "format": "date"
+        },
+        "text": {
+          "$ref": "#/$defs/text"
+        },
+        "bullets": {
+          "$ref": "#/$defs/textList"
+        },
+        "recognition": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "title",
+            "by",
+            "text"
+          ],
+          "properties": {
+            "title": {
+              "$ref": "#/$defs/text"
+            },
+            "by": {
+              "$ref": "#/$defs/text"
+            },
+            "text": {
+              "$ref": "#/$defs/text"
+            }
+          }
+        },
+        "image": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "alt",
+            "w",
+            "h"
+          ],
+          "properties": {
+            "alt": {
+              "$ref": "#/$defs/text"
+            },
+            "w": {
+              "type": "integer"
+            },
+            "h": {
+              "type": "integer"
+            }
+          }
+        },
+        "sources": {
+          "$ref": "#/$defs/sourceKeys"
+        }
+      }
+    },
+    "education": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "degree",
+          "field",
+          "school",
+          "place",
+          "logo",
+          "text",
+          "onResume",
+          "sources"
+        ],
+        "properties": {
+          "degree": {
+            "$ref": "#/$defs/text"
+          },
+          "field": {
+            "$ref": "#/$defs/text"
+          },
+          "school": {
+            "$ref": "#/$defs/text"
+          },
+          "place": {
+            "type": "string"
+          },
+          "year": {
+            "type": "integer",
+            "minimum": 1990,
+            "maximum": 2100
+          },
+          "logo": {
+            "type": "string",
+            "pattern": "^/(logos|img)/.+\\.(svg|webp)$"
+          },
+          "text": {
+            "$ref": "#/$defs/text"
+          },
+          "onResume": {
+            "type": "boolean"
+          },
+          "sources": {
+            "$ref": "#/$defs/sourceKeys"
+          }
+        }
+      }
+    },
+    "projects": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name",
+          "category",
+          "kind",
+          "description",
+          "technologies",
+          "highlights",
+          "stats",
+          "icon",
+          "sources"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "name": {
+            "$ref": "#/$defs/text"
+          },
+          "category": {
+            "$ref": "#/$defs/text"
+          },
+          "kind": {
+            "enum": [
+              "product",
+              "open-source",
+              "research"
+            ]
+          },
+          "role": {
+            "$ref": "#/$defs/text"
+          },
+          "url": {
+            "$ref": "#/$defs/url"
+          },
+          "repo": {
+            "$ref": "#/$defs/url"
+          },
+          "start": {
+            "$ref": "#/$defs/start"
+          },
+          "end": {
+            "$ref": "#/$defs/end"
+          },
+          "description": {
+            "$ref": "#/$defs/text"
+          },
+          "technologies": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/$defs/text"
+            }
+          },
+          "highlights": {
+            "$ref": "#/$defs/textList"
+          },
+          "stats": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/stat"
+            }
+          },
+          "icon": {
+            "$ref": "#/$defs/text"
+          },
+          "sources": {
+            "$ref": "#/$defs/sourceKeys"
+          },
+          "note": {
+            "$ref": "#/$defs/text"
+          }
+        }
+      }
+    },
+    "skills": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "groups",
+        "areas"
+      ],
+      "properties": {
+        "groups": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "name",
+              "items"
+            ],
+            "properties": {
+              "name": {
+                "$ref": "#/$defs/text"
+              },
+              "items": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "$ref": "#/$defs/text"
+                }
+              }
+            }
+          }
+        },
+        "areas": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "name",
+              "text"
+            ],
+            "properties": {
+              "name": {
+                "$ref": "#/$defs/text"
+              },
+              "text": {
+                "$ref": "#/$defs/text"
+              }
+            }
+          }
+        }
+      }
+    },
+    "sources": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "title",
+          "retrieved"
+        ],
+        "properties": {
+          "title": {
+            "$ref": "#/$defs/text"
+          },
+          "url": {
+            "$ref": "#/$defs/url"
+          },
+          "path": {
+            "$ref": "#/$defs/text"
+          },
+          "retrieved": {
+            "type": "string",
+            "format": "date"
+          },
+          "note": {
+            "$ref": "#/$defs/text"
+          }
+        }
+      }
+    }
+  }
+}
