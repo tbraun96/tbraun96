@@ -4,8 +4,9 @@ name: Deploy
 # llms.txt, the sitemap and robots.txt Content Signals, gates on the GEO score and on 100 in all four
 # Lighthouse categories (served locally by wrangler with the deploy's own config), deploys an assets-only
 # Cloudflare Worker on thomaspbraun.com and www.thomaspbraun.com, configures the zone, and verifies the live
-# site, rolling back if the live checks fail. Pull requests run the same pipeline with deploy: false — no
-# secrets, no Cloudflare API call, no zone change. Settings live in geoharness.toml.
+# site, rolling back if the live checks fail. ATSGate (https://ats.express) first renders /resume.pdf from
+# content/career.json and scores it; the build ships that exact file, and the last step checks the live hash.
+# Pull requests run the same pipeline with deploy: false — no secrets, no Cloudflare API call, no zone change. Settings live in geoharness.toml.
 
 on:
   push:
@@ -40,8 +41,23 @@ jobs:
           node-version: 22
       - name: Install (career.json validation needs ajv)
         run: npm ci --no-audit --no-fund
-      - name: Chromium for /resume.pdf (printed during npm run build)
-        run: npx playwright-core install chromium-headless-shell
+      - name: ATSGate renders and scores the public resume from content/career.json
+        id: atsgate
+        uses: Avarok-Cybersecurity/atsgate@fe89a9f5874d0fd0756816a4c6569adaa57a5fce # v0.1.0 + release pins
+        with:
+          mode: gate
+          career: content/career.json
+          career-format: tbraun96
+          tailoring: resume/general.yaml
+          contact: public
+          out: ${{ runner.temp }}/atsgate
+          blueprint: builtin:software-engineer-systems-rust
+          fail-on-integrity-flags: "true"
+          report: ${{ runner.temp }}/atsgate-report/report.json
+      - name: The site build ships exactly the PDF ATSGate scored
+        env:
+          RESUME_PDF: ${{ steps.atsgate.outputs.resume-pdf }}
+        run: echo "RESUME_PDF=$RESUME_PDF" >> "$GITHUB_ENV"
       - name: README.md is generated from content/
         run: npm run check:readme
       - name: GeoHarness (deploy)
@@ -65,6 +81,13 @@ jobs:
           deploy: "true"
           # A build that fails the live GEO audit or the production Lighthouse gate is replaced by the previous one.
           rollback-on-failure: "true"
+      - name: The live /resume.pdf is the PDF ATSGate scored
+        env:
+          SCORED: ${{ steps.atsgate.outputs.resume-sha256 }}
+        run: |
+          live="$(curl --fail --silent --show-error --location --proto '=https' https://thomaspbraun.com/resume.pdf | sha256sum | cut -d' ' -f1)"
+          echo "live $live, scored $SCORED"
+          test "$live" = "$SCORED"
       - name: Result
         env:
           GEO_SCORE: ${{ steps.geoharness.outputs.geo-score }}
@@ -90,8 +113,23 @@ jobs:
           node-version: 22
       - name: Install (career.json validation needs ajv)
         run: npm ci --no-audit --no-fund
-      - name: Chromium for /resume.pdf (printed during npm run build)
-        run: npx playwright-core install chromium-headless-shell
+      - name: ATSGate renders and scores the public resume from content/career.json
+        id: atsgate
+        uses: Avarok-Cybersecurity/atsgate@fe89a9f5874d0fd0756816a4c6569adaa57a5fce # v0.1.0 + release pins
+        with:
+          mode: gate
+          career: content/career.json
+          career-format: tbraun96
+          tailoring: resume/general.yaml
+          contact: public
+          out: ${{ runner.temp }}/atsgate
+          blueprint: builtin:software-engineer-systems-rust
+          fail-on-integrity-flags: "true"
+          report: ${{ runner.temp }}/atsgate-report/report.json
+      - name: The site build ships exactly the PDF ATSGate scored
+        env:
+          RESUME_PDF: ${{ steps.atsgate.outputs.resume-pdf }}
+        run: echo "RESUME_PDF=$RESUME_PDF" >> "$GITHUB_ENV"
       - name: README.md is generated from content/
         run: npm run check:readme
       - name: GeoHarness (dry run, deploy false)

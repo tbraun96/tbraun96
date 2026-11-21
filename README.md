@@ -51,5 +51,5 @@ LLM Inference Engineering · GPU Kernel Optimization · Rust Consultancy · Post
 
 ---
 
-<sub>Roles, projects, education and skills come from one file, `content/career.json`, which also generates the resume (`npm run resume`). This repository is also the source of [thomaspbraun.com](https://thomaspbraun.com): every push to `main` must score 100 in all four Lighthouse categories before [GeoHarness](https://github.com/Avarok-Cybersecurity/geoharness) deploys it to Cloudflare Workers.
+<sub>Roles, projects, education and skills come from one file, `content/career.json`, which [ATSGate](https://ats.express) also renders into the resume and scores before every deploy. This repository is also the source of [thomaspbraun.com](https://thomaspbraun.com): every push to `main` must score 100 in all four Lighthouse categories before [GeoHarness](https://github.com/Avarok-Cybersecurity/geoharness) deploys it to Cloudflare Workers.
 [![Deploy](https://github.com/tbraun96/tbraun96/actions/workflows/deploy.yml/badge.svg)](https://github.com/tbraun96/tbraun96/actions/workflows/deploy.yml)</sub>
