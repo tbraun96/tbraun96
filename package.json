@@ -10,14 +10,10 @@
     "build": "node build/build.mjs",
     "check:readme": "node build/build.mjs --check",
     "test": "node --test \"test/*.test.mjs\"",
-    "resume": "node resume/build.mjs --tailoring resume/tailoring/artcraft.json --contact resume/contact.private.json"
+    "resume": "sh resume/local.sh"
   },
   "devDependencies": {
     "ajv": "8.20.0",
-    "ajv-formats": "3.0.1",
-    "docx": "9.16.0",
-    "jszip": "3.10.2",
-    "pdfjs-dist": "6.5.438",
-    "playwright-core": "1.64.1"
+    "ajv-formats": "3.0.1"
   }
 }

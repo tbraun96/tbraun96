@@ -1,0 +1,35 @@
+# The public resume at thomaspbraun.com/resume.pdf. ATSGate (https://ats.express) imports
+# content/career.json, renders this selection, scores the PDF it rendered, and the deploy ships
+# exactly that PDF. A tailoring only selects and orders career.json facts; it cannot add one.
+# Ansys is left out because career.json has no dates for it.
+version: 1
+blueprint: builtin:software-engineer-systems-rust
+title: { variant: rust-systems }
+summary: basics
+max_pages: 2
+work:
+  - { id: atlas, highlights: [0, 1, 2], stats: [] }
+  - { id: nomyx, highlights: [0, 1], stats: [] }
+  - { id: avarok, highlights: [0, 1], stats: [] }
+  - { id: synopsys, highlights: [0], stats: [] }
+  - { id: commonwealth-labs, highlights: [0], stats: [] }
+  - { id: kraken, highlights: [0], stats: [] }
+  - { id: webb, highlights: [0], stats: [] }
+  - { id: bitgem, highlights: [0], stats: [] }
+projects:
+  - { id: atlas-inference-engine, highlights: [0, 1], stats: [0, 1] }
+  - { id: citadel-protocol, highlights: [0], stats: [0, 1] }
+  - { id: citadel-workspace, highlights: [0], stats: [0, 1] }
+  - { id: latticedb, highlights: [0], stats: [0, 1] }
+  - { id: certifiedcopy, highlights: [0], stats: [] }
+  - { id: synchronized-work, highlights: [0], stats: [] }
+  - { id: geoharness, highlights: [0], stats: [] }
+skills:
+  - Languages
+  - AI Inference & GPU
+  - Cryptography & Security
+  - Networking & Distributed Systems
+  - Web, WebAssembly & Cloud
+education: [oregon-state-university]
+publications: [us-patent-12-224-993-b2]
+awards: [delaware-patent-of-the-month]

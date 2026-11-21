@@ -1,13 +1,11 @@
 // The only module here that touches the filesystem. `node build/build.mjs` writes dist/ (the page, the static
 // files and the public resume at /resume.pdf) and README.md; `--check` fails instead of writing when README.md
-// is out of date.
+// is out of date. /resume.pdf is the PDF ATSGate rendered and scored (RESUME_PDF, set by the deploy workflow);
+// this build copies it unchanged so the file people download is the file that was scored.
 
 import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import * as copy from '../content/profile.mjs';
-import { resumeModel } from '../resume/model.mjs';
-import { checkPdf, printPdf } from '../resume/pdf.mjs';
-import { resumeHtml } from '../resume/render-html.mjs';
 import { loadCareer } from './career.mjs';
 import { compose } from './compose.mjs';
 import { page } from './page.mjs';
@@ -16,7 +14,6 @@ import { readme } from './readme.mjs';
 const root = fileURLToPath(new URL('..', import.meta.url));
 const at = (p) => root + p;
 const REPO = 'tbraun96/tbraun96';
-const PUBLIC_TAILORING = 'resume/tailoring/general.json';
 
 function inlineSignature(svg) {
   const inline = svg
@@ -26,15 +23,13 @@ function inlineSignature(svg) {
   return inline;
 }
 
-/** The public resume: the same model as `npm run resume`, with no phone number (contact.phone null). */
-async function publicResume(career) {
-  const tailoring = JSON.parse(await readFile(at(PUBLIC_TAILORING), 'utf8'));
-  const { doc, warnings } = resumeModel(career, tailoring, { phone: null });
-  for (const w of warnings) console.warn(`warning: ${w}`);
-  const pdf = await printPdf(resumeHtml(doc));
-  const { pages, problems } = await checkPdf(pdf, doc);
-  if (problems.length > 0) throw new Error(`/resume.pdf failed its parse check:\n  - ${problems.join('\n  - ')}`);
-  return { pdf, pages };
+/** The PDF ATSGate rendered and scored. There is no fallback: a build without it would ship an unscored resume. */
+async function scoredResume() {
+  const path = process.env.RESUME_PDF;
+  if (!path) throw new Error('RESUME_PDF is not set: it must name the PDF ATSGate rendered and scored (see .github/workflows/deploy.yml).');
+  const pdf = await readFile(path);
+  if (pdf.subarray(0, 5).toString('latin1') !== '%PDF-') throw new Error(`RESUME_PDF (${path}) is not a PDF`);
+  return pdf;
 }
 
 async function main() {
@@ -54,15 +49,15 @@ async function main() {
   const css = (await readFile(at('static/styles.css'), 'utf8')).replace(/\s*\n\s*/g, '');
   const signatureSvg = inlineSignature(await readFile(at('static/img/signature.svg'), 'utf8'));
   const html = page(content, { css, signatureSvg, year: new Date().getUTCFullYear() });
-  const resume = await publicResume(career);
+  const resume = await scoredResume();
 
   await rm(at('dist'), { recursive: true, force: true });
   await mkdir(at('dist'));
   await cp(at('static'), at('dist'), { recursive: true, filter: (src) => !src.endsWith('styles.css') });
   await writeFile(at('dist/index.html'), html);
-  await writeFile(at('dist/resume.pdf'), resume.pdf);
+  await writeFile(at('dist/resume.pdf'), resume);
   await writeFile(at('README.md'), expected);
-  console.log(`dist/ built (${(html.length / 1024).toFixed(1)} KiB index.html, resume.pdf ${resume.pages} pages, parse check passed); README.md written.`);
+  console.log(`dist/ built (${(html.length / 1024).toFixed(1)} KiB index.html, resume.pdf ${(resume.length / 1024).toFixed(1)} KiB from ATSGate); README.md written.`);
 }
 
 await main();

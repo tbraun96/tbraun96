@@ -5,7 +5,7 @@ import { loadCareer } from '../build/career.mjs';
 import { compose } from '../build/compose.mjs';
 import { page } from '../build/page.mjs';
 import { readme } from '../build/readme.mjs';
-import { privacyProblems } from '../resume/check.mjs';
+import { privacyProblems } from '../build/privacy.mjs';
 
 const career = await loadCareer();
 const content = compose(copy, career);
