@@ -582,6 +582,18 @@
           "value": "11",
           "source": "gh repo view Avarok-Cybersecurity/lattice-db",
           "retrieved": "2026-11-20"
+        },
+        {
+          "label": "faster vector search than Qdrant, both over HTTP (168 us against 330 us)",
+          "value": "2x",
+          "source": "github.com/Avarok-Cybersecurity/lattice-db/blob/6631a82/README.md#-performance (1,000 x 128-dim vectors; 1,000-node graph)",
+          "retrieved": "2026-11-23"
+        },
+        {
+          "label": "faster Cypher MATCH than Neo4j, HTTP against Bolt (85 us against 1,147 us)",
+          "value": "13x",
+          "source": "github.com/Avarok-Cybersecurity/lattice-db/blob/6631a82/README.md#-performance (1,000 x 128-dim vectors; 1,000-node graph)",
+          "retrieved": "2026-11-23"
         }
       ],
       "sources": [
@@ -654,6 +666,12 @@
           "value": "9",
           "source": "gh api repos/Avarok-Cybersecurity/AutoRepoRAG/releases",
           "retrieved": "2026-11-20"
+        },
+        {
+          "label": "to load a site's search corpus as a LatticeDB snapshot in a page, service worker or Cloudflare Worker",
+          "value": "~2 ms",
+          "source": "github.com/Avarok-Cybersecurity/AutoRepoRAG/blob/2c68f81/README.md#site-corpora-v3",
+          "retrieved": "2026-11-23"
         }
       ],
       "sources": [
@@ -739,6 +757,18 @@
           "value": "1,175",
           "source": "huggingface.co/api/models/Avarok/nvidia-nemotron-nano-12b-v2-q4_k_m (downloadsAllTime)",
           "retrieved": "2026-11-20"
+        },
+        {
+          "label": "faster NVFP4 decode than NVIDIA's AWQ INT4 image (47.1 against 38.2 tok/s peak)",
+          "value": "+20%",
+          "source": "github.com/Avarok-Cybersecurity/dgx-vllm/blob/ead7ae7/README.md (Qwen3-Next-80B-A3B on one DGX Spark)",
+          "retrieved": "2026-11-23"
+        },
+        {
+          "label": "peak decode from an 80B model with MTP speculative decoding, about 2x the AWQ baseline",
+          "value": "111.9 tok/s",
+          "source": "github.com/Avarok-Cybersecurity/dgx-vllm/blob/ead7ae7/README.md (Qwen3-Next-80B-A3B on one DGX Spark)",
+          "retrieved": "2026-11-23"
         }
       ],
       "sources": [
@@ -767,13 +797,31 @@
       "icon": "code",
       "highlights": [
         "No libheif, no C toolchain, no unsafe",
-        "4.28x faster than the AGPL alternative, per the project README"
+        "Decodes the independent 512x512 tiles of a photograph in parallel, and converts colour in integer fixed point within one least significant bit of the f32 reference"
       ],
       "stats": [
         {
           "label": "crates.io downloads",
           "value": "283,637",
           "source": "crates.io/api/v1/crates/heic-rs",
+          "retrieved": "2026-11-23"
+        },
+        {
+          "label": "faster than the AGPL heic crate on a 2048x1536 photo (1.77 ms against 7.58 ms)",
+          "value": "4.28x",
+          "source": "github.com/tbraun96/heic-rs/blob/621014b/benches/results.json (Apple M3 Max, best of nine)",
+          "retrieved": "2026-11-23"
+        },
+        {
+          "label": "faster colour conversion after a fused fixed-point rewrite (21.97 ms to 2.24 ms)",
+          "value": "9.8x",
+          "source": "github.com/tbraun96/heic-rs/blob/621014b/benches/results.json (Apple M3 Max, best of nine)",
+          "retrieved": "2026-11-23"
+        },
+        {
+          "label": "from decoding a photo's 12 tiles in parallel (17.0 ms to 1.83 ms)",
+          "value": "9.3x",
+          "source": "github.com/tbraun96/heic-rs/blob/621014b/benches/results.json (Apple M3 Max, best of nine)",
           "retrieved": "2026-11-23"
         }
       ],
