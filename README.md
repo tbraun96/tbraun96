@@ -34,14 +34,13 @@ AI inference innovator and Rust expert. Co-Founder of Atlas Cybernetics and crea
 ## Experience
 
 - **Co-Founder**, Atlas Cybernetics Corp — Mar 2026 - Present
-- **Principal Rust Software Engineer**, Nomyx — Feb 2025 - Present
 - **Founder & Rust Consultant**, Avarok Cybersecurity — Jan 2018 - Present
+- **Principal Rust Software Engineer**, Nomyx — Feb 2025 - Mar 2026
 - **Senior Software Engineer**, Synopsys — Feb 2023 - Mar 2026
 - **Rust Software Engineer**, Commonwealth Labs — Dec 2022 - Feb 2025
 - **Software Engineer I**, Kraken Digital Asset Exchange — Oct 2022 - Dec 2022
 - **Rust Software Engineer**, Webb.tools — Nov 2021 - Oct 2022
 - **Solidity Developer**, Bitgem NFT — Dec 2020 - Feb 2021
-- **R&D Engineer II**, Ansys — previous
 
 **Patent** — *Recursive Cryptography Protocol*, [US Patent 12,224,993 B2](https://patents.google.com/patent/US12224993B2/en). A post-quantum session-layer protocol with highly configurable security: per-message re-keying, multi-layered encryption, 3D-matrix ratcheting and post-quantum key exchange inside a networking protocol for peer-to-peer messaging and network applications.
 
