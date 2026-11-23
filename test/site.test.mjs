@@ -62,7 +62,7 @@ test('the README lists the roles with their dates and the linked projects', () =
   assert.match(md, /- \*\*Co-Founder\*\*, Atlas Cybernetics Corp — Mar 2026 - Present/);
   assert.match(md, /\[Resume \(PDF\)\]\(https:\/\/thomaspbraun.com\/resume.pdf\)/);
   assert.match(md, /- \*\*Principal Rust Software Engineer\*\*, Nomyx — Feb 2025 - Mar 2026/);
-  assert.match(md, /- \*\*Senior Software Engineer\*\*, Synopsys — Feb 2023 - Mar 2026/);
+  assert.match(md, /- \*\*Senior Software Engineer\*\*, Synopsys — Nov 2021 - Mar 2026/);
   assert.doesNotMatch(md, /, Ansys —/);
   assert.match(md, /\[\*\*LatticeDB\*\*\]\(https:\/\/avarok-cybersecurity.github.io\/lattice-db\/\)/);
   assert.doesNotMatch(md, /Rust Neural Network Engine/);

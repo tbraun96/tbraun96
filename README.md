@@ -36,7 +36,7 @@ AI inference innovator and Rust expert. Co-Founder of Atlas Cybernetics and crea
 - **Co-Founder**, Atlas Cybernetics Corp — Mar 2026 - Present
 - **Founder & Rust Consultant**, Avarok Cybersecurity — Jan 2018 - Present
 - **Principal Rust Software Engineer**, Nomyx — Feb 2025 - Mar 2026
-- **Senior Software Engineer**, Synopsys — Feb 2023 - Mar 2026
+- **Senior Software Engineer**, Synopsys — Nov 2021 - Mar 2026
 - **Rust Software Engineer**, Commonwealth Labs — Dec 2022 - Feb 2025
 - **Software Engineer I**, Kraken Digital Asset Exchange — Oct 2022 - Dec 2022
 - **Rust Software Engineer**, Webb.tools — Nov 2021 - Oct 2022
