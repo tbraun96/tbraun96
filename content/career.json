@@ -130,7 +130,7 @@
       "org": "Synopsys",
       "location": "Remote",
       "engagement": "employee",
-      "start": "2023-02",
+      "start": "2021-11",
       "end": "2026-03",
       "summary": "Encryption-at-rest for AI retrieval pipelines, a simulation DSL and the CI that kept cross-repository development in sync.",
       "bullets": [
@@ -999,7 +999,7 @@
       "note": "Beacon-based page loads and visits only; no unique-visitor metric exists in this dataset."
     },
     "owner-2026-11-23": {
-      "title": "Owner, 2026-11-23: left Nomyx in March 2026; the Ansys role is the Synopsys role (Ansys was acquired by Synopsys)",
+      "title": "Owner, 2026-11-23: left Nomyx in March 2026; the Ansys role is the Synopsys role (Ansys was acquired by Synopsys), held from November 2021 to March 2026",
       "path": "conversation with the owner (not published)",
       "retrieved": "2026-11-23"
     },
