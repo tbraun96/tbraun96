@@ -57,9 +57,10 @@ test('a role cannot end before it starts, and ids are unique', () => {
 
 test('every role from both sources is present', () => {
   const orgs = career.experience.map((r) => r.org);
-  for (const org of ['Atlas Cybernetics Corp', 'Nomyx', 'Avarok Cybersecurity', 'Synopsys', 'Commonwealth Labs', 'Kraken Digital Asset Exchange', 'Webb.tools', 'Bitgem NFT', 'Ansys']) {
+  for (const org of ['Atlas Cybernetics Corp', 'Nomyx', 'Avarok Cybersecurity', 'Synopsys', 'Commonwealth Labs', 'Kraken Digital Asset Exchange', 'Webb.tools', 'Bitgem NFT']) {
     assert.ok(orgs.includes(org), `missing role at ${org}`);
   }
+  assert.ok(!orgs.includes('Ansys'), 'Ansys is the Synopsys role, not a separate one');
   assert.ok(career.projects.some((p) => p.name === 'LatticeDB'));
   assert.ok(career.projects.every((p) => p.url || p.repo), 'every project points at a page or a repository');
 });
@@ -74,7 +75,7 @@ test('date helpers', () => {
 
 test('reverse chronological order: current by start, then ended by end, undated last', () => {
   const ids = reverseChronological(career.experience).map((r) => r.id);
-  assert.deepEqual(ids, ['atlas', 'nomyx', 'avarok', 'synopsys', 'commonwealth-labs', 'kraken', 'webb', 'bitgem', 'ansys']);
+  assert.deepEqual(ids, ['atlas', 'avarok', 'nomyx', 'synopsys', 'commonwealth-labs', 'kraken', 'webb', 'bitgem']);
 });
 
 test('title variants must exist and be non-empty', () => {

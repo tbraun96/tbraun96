@@ -84,7 +84,7 @@
       "location": "Remote",
       "engagement": "employee",
       "start": "2025-02",
-      "end": "present",
+      "end": "2026-03",
       "summary": "Smart-contract infrastructure and full-stack decentralized applications on the Stellar network, plus expert technical analysis for patent litigation.",
       "bullets": [
         "Implemented ERC-2535 (the Diamond Proxy Standard) for the Stellar network, giving granular control over smart-contract upgradeability with shared storage so contracts governed by one proxy communicate through memory.",
@@ -94,7 +94,8 @@
         "Produced multiple 40+ page infringement charts on cryptographic software for a top-10 patent litigation firm, supporting recovery of tens of millions of dollars in damages."
       ],
       "sources": [
-        "resume-2026-06"
+        "resume-2026-06",
+        "owner-2026-11-23"
       ]
     },
     {
@@ -139,8 +140,11 @@
         "Drove adoption of Data Shield for domain-specific applications through parameterized Docker builds."
       ],
       "sources": [
-        "resume-2026-06"
-      ]
+        "resume-2026-06",
+        "owner-2026-11-23",
+        "synopsys-ansys-acquisition"
+      ],
+      "unit": "formerly Ansys"
     },
     {
       "id": "commonwealth-labs",
@@ -217,21 +221,6 @@
       "sources": [
         "resume-2026-06"
       ]
-    },
-    {
-      "id": "ansys",
-      "title": "R&D Engineer II",
-      "org": "Ansys",
-      "engagement": "employee",
-      "start": "unknown",
-      "end": "unknown",
-      "summary": "Research and development of simulation technologies, applying technical expertise to engineering challenges in a high-performance computing environment.",
-      "bullets": [],
-      "logo": "/logos/ansys-logo.svg",
-      "sources": [
-        "site-2026-11"
-      ],
-      "note": "Listed on the site without dates and absent from the June 2026 resume. Owner to supply dates, or confirm whether this is the same position as the Synopsys role (Synopsys acquired Ansys in 2025)."
     }
   ],
   "patent": {
@@ -783,16 +772,15 @@
       "stats": [
         {
           "label": "crates.io downloads",
-          "value": "260,115",
+          "value": "283,637",
           "source": "crates.io/api/v1/crates/heic-rs",
-          "retrieved": "2026-11-20"
+          "retrieved": "2026-11-23"
         }
       ],
       "sources": [
         "github-api",
         "crates-io"
-      ],
-      "note": "Not on the site or the June resume; added because it is a verified, published crate of the owner's. Owner may drop it."
+      ]
     }
   ],
   "skills": {
@@ -1009,6 +997,16 @@
       "url": "https://api.cloudflare.com/client/v4/graphql",
       "retrieved": "2026-11-20",
       "note": "Beacon-based page loads and visits only; no unique-visitor metric exists in this dataset."
+    },
+    "owner-2026-11-23": {
+      "title": "Owner, 2026-11-23: left Nomyx in March 2026; the Ansys role is the Synopsys role (Ansys was acquired by Synopsys)",
+      "path": "conversation with the owner (not published)",
+      "retrieved": "2026-11-23"
+    },
+    "synopsys-ansys-acquisition": {
+      "title": "Synopsys Completes Acquisition of Ansys (press release, 2025-07-17)",
+      "url": "https://news.synopsys.com/2025-07-17-Synopsys-Completes-Acquisition-of-Ansys",
+      "retrieved": "2026-11-23"
     }
   }
 }
